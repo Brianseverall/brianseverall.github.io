@@ -1,2 +1,420 @@
-# brianseverall.github.io
-Created with CodeSandbox
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BRIANSEVERALL SOLUTIONS</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background: linear-gradient(
+          135deg,
+          #abeb14,
+          #0cf12b,
+          #064bbb,
+          #c2e9fb,
+          #e827b1
+        );
+        color: #212121;
+        line-height: 1.6;
+        padding: 30px;
+      }
+
+      .marquee-header {
+        background-color: #0652dd;
+        color: white;
+        padding: 10px;
+        font-weight: bold;
+        font-size: 18px;
+        text-align: center;
+        border-radius: 5px;
+        margin-bottom: 20px;
+      }
+
+      .marquee-header marquee {
+        font-size: 20px;
+        scrollamount: 4;
+      }
+
+      .header-logo-title {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+      }
+
+      .header-logo-title img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      }
+
+      .header-logo-title h1 {
+        font-size: 2.5rem;
+        color: #fff;
+        text-shadow: 2px 2px #000;
+        flex: 1;
+      }
+
+      .section {
+        margin-bottom: 40px;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      }
+
+      h2 {
+        color: #fff;
+        margin-bottom: 10px;
+        text-shadow: 1px 1px #000;
+      }
+
+      ul {
+        list-style: square inside;
+        margin-bottom: 20px;
+      }
+
+      img.profile {
+        width: 200px;
+        border-radius: 15px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+      }
+
+      a {
+        color: #e00a0a;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .shapes {
+        display: flex;
+        gap: 20px;
+        margin-top: 20px;
+        flex-wrap: wrap;
+      }
+
+      .shape {
+        width: 100px;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 20px;
+        border-radius: 20px;
+        background: linear-gradient(to bottom right, #ffffff30, #ffffff10);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3),
+          inset 0 0 10px rgba(255, 255, 255, 0.2);
+        color: #fff;
+      }
+
+      .whatsapp-button {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 12px 20px;
+        background-color: #25d366;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: 500;
+        text-decoration: none;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+        transition: background-color 0.3s ease;
+      }
+
+      .whatsapp-button:hover {
+        background-color: #1ebc5a;
+      }
+
+      footer {
+        text-align: center;
+        padding: 20px;
+        margin-top: 40px;
+        font-size: 14px;
+        color: #fff;
+        border-top: 1px solid #ddd;
+      }
+
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .gallery img {
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      }
+
+      /* Paragraph Box Style */
+      .paragraph-box {
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 30px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      }
+
+      .paragraph-box textarea {
+        width: 100%;
+        height: 150px;
+        padding: 10px;
+        border-radius: 8px;
+        border: none;
+        outline: none;
+        resize: none;
+        font-size: 16px;
+        font-family: "Poppins", sans-serif;
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .paragraph-box button {
+        margin-top: 10px;
+        padding: 10px 20px;
+        background-color: #0652dd;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .paragraph-box button:hover {
+        background-color: #0b61ff;
+      }
+
+      /* Floating WhatsApp Button */
+      .float-whatsapp {
+        position: fixed;
+        bottom: 25px;
+        right: 25px;
+        background-color: #25d366;
+        color: white;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        cursor: pointer;
+        transition: transform 0.3s ease;
+        z-index: 999;
+      }
+
+      .float-whatsapp:hover {
+        transform: scale(1.1);
+        background-color: #1ebc5a;
+      }
+
+      @media (max-width: 500px) {
+        .header-logo-title h1 {
+          font-size: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="marquee-header">
+      <marquee behavior="scroll" direction="left" scrollamount="4">
+        🚀 Welcome to Brianseverall Solutions | Your Tech Partner | Call:
+        +254754415514 | #DigitalKenya 💻🌐
+      </marquee>
+    </div>
+
+    <div class="header-logo-title">
+      <img
+        src="https://i.postimg.cc/bdXxs0XH/Whats-App-Image-2025-06-13-at-12-26-01.jpg"
+        alt="Logo"
+      />
+      <h1>Welcome to BRIANSEVERALL SOLUTIONS</h1>
+    </div>
+
+    <img
+      class="profile"
+      src="https://i.postimg.cc/T1fNpXr3/Whats-App-Image-2025-06-13-at-12-11-17.jpg"
+      alt="My Profile Photo"
+    />
+
+    <div class="section">
+      <h2>About Me</h2>
+      <p>
+        Hi, I'm <strong>Brian Kiprop Bett</strong>, a passionate web developer
+        and ICT specialist from Nandi Hills, Kenya. I hold a Diploma in
+        Information Communication Technology and specialize in digital solutions
+        that empower businesses and individuals.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>Programming Languages</h2>
+      <ul>
+        <li>C</li>
+        <li>C++</li>
+        <li>Java</li>
+        <li>Python</li>
+        <li>JavaScript</li>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>PHP</li>
+        <li>SQL</li>
+        <li>C#</li>
+        <li>Visual Basic</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>My Skills</h2>
+      <ul>
+        <li>Web development (HTML, CSS, JavaScript, PHP)</li>
+        <li>Software development</li>
+        <li>Database management</li>
+        <li>
+          Cyber services (printing, scanning, KRA services, online forms, etc.)
+        </li>
+        <li>Network setup and troubleshooting</li>
+        <li>System installation and maintenance</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Services I Offer</h2>
+      <ul>
+        <li>Website design and development</li>
+        <li>Cyber café services</li>
+        <li>ICT support and maintenance</li>
+        <li>Online application services</li>
+        <li>Graphic design (logos, banners)</li>
+        <li>Programming help and tutorials</li>
+        <li>System Analyst and Designer</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Projects</h2>
+      <ul>
+        <li>
+          <a
+            href="https://github.com/Brianseverall/Brianseverall"
+            target="_blank"
+            >Visit my GitHub Project</a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>IT Shapes & Symbols</h2>
+      <p>Below are symbolic objects representing my areas of work in IT:</p>
+      <div class="shapes">
+        <div class="shape">🖥️</div>
+        <div class="shape">{ }</div>
+        <div class="shape">&lt;/&gt;</div>
+        <div class="shape">BK</div>
+        <div class="shape">🤖</div>
+        <div class="shape">🌐</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>My Vision</h2>
+      <p>
+        I hope to inspire young developers to use technology in creative and
+        ethical ways. My dream is to create a tech hub that offers free training
+        and ICT services to local communities in Kenya and beyond.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>Gallery</h2>
+      <div class="gallery">
+        <img
+          src="https://i.postimg.cc/5y9ZpNJD/Whats-App-Image-2025-06-13-at-16-43-44-1.jpg"
+          alt="Gallery Image 1"
+        />
+        <img
+          src="https://i.postimg.cc/mDyvQ1vQ/Whats-App-Image-2025-06-13-at-16-43-44.jpg"
+          alt="Gallery Image 2"
+        />
+        <img
+          src="https://i.postimg.cc/Kj9CWSvj/Whats-App-Image-2025-06-13-at-16-43-43.jpg"
+          alt="Gallery Image 3"
+        />
+      </div>
+    </div>
+
+    <!-- ✅ New Paragraph Box -->
+    <div class="paragraph-box">
+      <h2>Write a Message</h2>
+      <textarea placeholder="Write something here..."></textarea>
+      <button type="submit">Send</button>
+    </div>
+
+    <div class="section">
+      <h2>Contact Me</h2>
+      <p>
+        Email:
+        <a href="mailto:brianseverallsolutions@gmail.com"
+          >brianseverallsolutions@gmail.com</a
+        >
+      </p>
+      <p>Phone: +254754415514 | WhatsApp: 0115769984</p>
+      <p>
+        Facebook: Brianseverall Kiprop Bett | Instagram: brianseverall Kiprop
+        Bett | YouTube: brianseverall2372
+      </p>
+      <a
+        class="whatsapp-button"
+        href="https://wa.me/254115769984"
+        target="_blank"
+        >Chat with Me on WhatsApp</a
+      ><br /><br />
+      <a
+        class="whatsapp-button"
+        style="background-color: #3b5998"
+        href="https://www.facebook.com/BRIANSEVERALL10"
+        target="_blank"
+        >Visit My Facebook</a
+      ><br /><br />
+      <a
+        class="whatsapp-button"
+        style="background-color: #ff0000"
+        href="https://youtube.com/@brianseverall?si=R24sr054p8lAyEY7"
+        target="_blank"
+        >Watch on YouTube</a
+      >
+    </div>
+
+    <!-- ✅ Floating WhatsApp Button -->
+    <a
+      href="https://wa.me/254115769984"
+      class="float-whatsapp"
+      target="_blank"
+      title="Chat on WhatsApp"
+      >💬</a>
+
+    <footer>&copy; @brianseverall2025</footer>
+  </body>
+</html>
