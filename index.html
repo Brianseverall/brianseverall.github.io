@@ -179,8 +179,26 @@
       border:1px solid #ddd;
       border-radius:5px;
     }
+    .form-popup form button{
+      color:white;
+      border:none;
+      padding:10px 20px;
+      border-radius:8px;
+      cursor:pointer;
+      font-weight:bold;
+      margin:5px;
+    }
+    .form-popup form button[type="submit"]{
+      background:#064bbb;
+    }
+    .form-popup form button[type="button"]{
+      background:#ff0000;
+    }
+    .form-popup form button:hover{opacity:0.85;}
+
     marquee{background:#0cf12b;color:white;font-weight:bold;padding:8px;}
     footer{text-align:center;padding:10px;color:#064bbb;font-weight:600;}
+
     .feedback{
       background:rgba(255,255,255,0.9);
       border-radius:10px;
@@ -197,11 +215,19 @@
       padding:10px;
       margin:10px 0;
     }
-    .feedback-card img{
+    .feedback-avatar{
       width:60px;
       height:60px;
       border-radius:50%;
       margin-right:15px;
+      background:#064bbb;
+      color:white;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:24px;
+      font-weight:bold;
+      text-transform:uppercase;
     }
     .feedback-form input,
     .feedback-form select,
@@ -237,12 +263,13 @@
 </head>
 <body>
   <header>
-    <img src="https://uploads.onecompiler.io/43unes7px/43yfjj9qq/WhatsApp%20Image%202025-10-02%20at%2022.09.27.jpeg" alt="Logo" class="logo">
+    
     <div>
       <h1>Welcome to BRIANSEVERALL SOLUTIONS</h1>
       <p>Your Trusted Tech Partner</p>
     </div>
   </header>
+
   <nav>
     <a href="#home">Home</a>
     <a href="#about">About Me</a>
@@ -250,26 +277,31 @@
     <a href="#feedback">Client Feedback</a>
     <a href="#contact">Contact Us</a>
   </nav>
+
   <section id="home">
     <h2>Empowering You Through Technology</h2>
     <p>We build digital solutions that transform your business and simplify your life.</p>
     <button class="hire-btn" id="hireMeBtn">Click to Hire Us</button>
   </section>
+
   <section id="about">
     <img src="https://i.postimg.cc/T1fNpXr3/Whats-App-Image-2025-06-13-at-12-11-17.jpg" alt="CEO Photo">
     <div class="about-text">
       <h2>About Me (CEO)</h2>
-      <p>Hi, I’m <b>Brian Kiprop Bett</b>, a dedicated web developer and ICT specialist proudly rooted in <b>Nandi Hills, Kenya</b>...<br><br>I specialize in a wide range of ICT services, including web development, system administration, cyber services, computer networking, programming, virtual assistance, and general digital support.</p>
+      <p>Hi, I’m Brian Kiprop Bett, a dedicated web developer and ICT specialist proudly rooted in Nandi Hills, Kenya. With a Diploma in Information Communication Technology (ICT), I’ve immersed myself in the ever-evolving digital world, equipping myself with skills to solve real-world problems using technology. My journey in ICT began with a strong desire to bridge the digital gap in my community and help businesses transition into the digital age. From building dynamic websites to offering hands-on tech support, I’ve committed my career to helping others grow through technology.
+
+I specialize in a wide range of ICT services, including web development, system administration, cyber services, computer networking, programming, virtual assistance, and general digital support. Whether you need a secure business system, a clean website, or expert help in managing your ICT infrastructure, I’m here to deliver reliable, professional solutions. Each project I handle is guided by the goal of using technology to empower individuals and organizations, and to make a lasting impact in the digital space.</p>
     </div>
   </section>
-  <section id="gallery">
-    <h2>Gallery</h2>
-    <div class="gallery-grid">
-      <img src="https://i.postimg.cc/mDyvQ1vQ/Whats-App-Image-2025-06-13-at-16-43-44.jpg" alt="Gallery 1">
-      <img src="https://i.postimg.cc/5y9ZpNJD/Whats-App-Image-2025-06-13-at-16-43-44-1.jpg" alt="Gallery 2">
-      <img src="https://i.postimg.cc/T1fNpXr3/Whats-App-Image-2025-06-13-at-12-11-17.jpg" alt="Gallery 3">
-    </div>
-  </section>
+  
+</section> <section id="gallery">    
+    <h2>Gallery</h2>    
+    <div class="gallery-grid">    
+      <img src="https://i.postimg.cc/mDyvQ1vQ/Whats-App-Image-2025-06-13-at-16-43-44.jpg" alt="Gallery 1">    
+      <img src="https://i.postimg.cc/5y9ZpNJD/Whats-App-Image-2025-06-13-at-16-43-44-1.jpg" alt="Gallery 2">    
+      <img src="https://i.postimg.cc/T1fNpXr3/Whats-App-Image-2025-06-13-at-12-11-17.jpg" alt="Gallery 3">    
+    </div>  
+    
   <section id="services">
     <h2>Services We Offer</h2>
     <div class="dropdown">
@@ -308,6 +340,7 @@
       </div>
     </div>
   </section>
+
   <section id="feedback" class="feedback">
     <h2>Client Feedback</h2>
     <div id="feedbackList"></div>
@@ -323,19 +356,23 @@
       <button type="submit">Submit Feedback</button>
     </form>
   </section>
+
   <section id="contact">
     <h2>Contact Us</h2>
     <a href="https://wa.me/254115769984" class="btn btn-whatsapp">💬 Chat With Us on WhatsApp</a>
     <a href="https://www.facebook.com/BRIANSEVERALL10" class="btn btn-facebook">📘 Follow Us on Facebook</a>
     <a href="https://youtube.com/@brianseverall?si=R24sr054p8lAyEY7" class="btn btn-youtube">▶️ Watch Us on YouTube</a>
   </section>
+
   <marquee behavior="scroll" direction="left" scrollamount="4">
     🚀 Welcome to Brianseverall Solutions | Your Tech Partner | Call: +254754415514 | WhatsApp: 0115769984 | #DigitalKenya 💻🌐
   </marquee>
+
   <footer>&copy; 2025 Brianseverall Solutions | All Rights Reserved</footer>
   <a class="floating-whatsapp" href="https://wa.me/254115769984" target="_blank">💬 WhatsApp</a>
   <a class="floating-help" href="tel:+254754415514">CLICK FOR HELP</a>
 
+  <!-- Hire Us Popup -->
   <div id="hireFormPopup" class="form-popup">
     <form id="hireForm" action="https://formsubmit.co/brianseverallsolutions@gmail.com" method="POST">
       <h2>Hire Us</h2>
@@ -358,7 +395,6 @@
       content.style.display=(content.style.display==="block")?"none":"block";
     }
 
-    // Dropdown services trigger hire popup
     document.querySelectorAll(".dropdown-content li").forEach(item => {
       item.addEventListener("click", () => {
         hirePopup.style.display = "flex";
@@ -376,21 +412,21 @@
       feedbacks.forEach(f=>{
         const div=document.createElement("div");
         div.className="feedback-card";
-        div.innerHTML=`<img src="${f.img}" alt="avatar"><div><strong>${f.name}</strong><p>${f.text}</p></div>`;
+        const initial=f.name.charAt(0).toUpperCase();
+        div.innerHTML=`
+          <div class='feedback-avatar'>${initial}</div>
+          <div><strong>${f.name}</strong><p>${f.text}</p></div>`;
         feedbackList.appendChild(div);
       });
     }
 
     feedbackForm.addEventListener("submit", e=>{
       e.preventDefault();
-      const name=document.getElementById("fbName").value;
+      const name=document.getElementById("fbName").value.trim();
       const gender=document.getElementById("fbGender").value;
-      const text=document.getElementById("fbText").value;
-      const img=gender==="male"
-        ?"https://i.postimg.cc/pXkkjpPX/male-avatar.png"
-        :"https://i.postimg.cc/zB3dVdmL/female-avatar.png";
+      const text=document.getElementById("fbText").value.trim();
       const feedbacks=JSON.parse(localStorage.getItem("feedbacks")||"[]");
-      feedbacks.push({name,gender,text,img});
+      feedbacks.push({name,gender,text});
       localStorage.setItem("feedbacks",JSON.stringify(feedbacks));
       feedbackForm.reset();
       renderFeedback();
