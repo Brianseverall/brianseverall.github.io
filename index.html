@@ -1,438 +1,287 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BRIANSEVERALL SOLUTIONS</title>
-  <link rel="icon" type="image/jpeg" href="favicon.jpg">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap">
-  <style>
-    *{margin:0;padding:0;box-sizing:border-box;font-family:"Poppins",sans-serif;}
-    html{scroll-behavior:smooth;}
-    body{background-color:#c2e9fb;color:#212121;line-height:1.6;}
-    header{
-      background:#064bbb;
-      color:white;
-      padding:25px 10px;
-      border-bottom:4px solid #0cf12b;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      position:relative;
-      text-align:center;
-    }
-    header img.logo{
-      position:absolute;
-      left:20px;
-      width:110px;
-      height:110px;
-      border-radius:50%;
-      object-fit:cover;
-      border:3px solid white;
-      box-shadow:0 3px 8px rgba(0,0,0,0.5);
-    }
-    header h1{font-size:2rem;}
-    nav{
-      display:flex;
-      justify-content:center;
-      flex-wrap:wrap;
-      background:#0cf12b;
-      position:sticky;
-      top:0;
-      z-index:999;
-    }
-    nav a{
-      color:white;
-      text-decoration:none;
-      padding:12px 18px;
-      display:inline-block;
-      font-weight:600;
-    }
-    nav a:hover{background:#064bbb;}
-    section{padding:40px 20px;text-align:center;}
-    h2{color:#064bbb;margin-bottom:15px;}
-    #home{
-      background-size:cover;
-      background-position:center;
-      animation:homeSlideshow 20s infinite alternate;
-      color:white;
-      padding:100px 20px;
-      text-shadow:2px 2px 5px #000;
-      position:relative;
-    }
-    @keyframes homeSlideshow{
-      0%{background-image:url("https://i.postimg.cc/bdXxs0XH/Whats-App-Image-2025-06-13-at-12-26-01.jpg");}
-      25%{background-image:url("https://i.postimg.cc/5y9ZpNJD/Whats-App-Image-2025-06-13-at-16-43-44-1.jpg");}
-      50%{background-image:url("https://i.postimg.cc/mDyvQ1vQ/Whats-App-Image-2025-06-13-at-16-43-44.jpg");}
-      75%{background-image:url("https://uploads.onecompiler.io/43unes7px/43zcagjgh/WhatsApp%20Image%202025-10-11%20at%2023.16.24.jpeg");}
-      100%{background-image:url("https://i.postimg.cc/T1fNpXr3/Whats-App-Image-2025-06-13-at-12-11-17.jpg");}
-    }
-    #about{
-      display:flex;
-      flex-wrap:wrap;
-      align-items:center;
-      justify-content:center;
-      gap:20px;
-    }
-    #about img{
-      width:375px;
-      height:250px;
-      border-radius:10px;
-      box-shadow:0 4px 12px rgba(0,0,0,0.4);
-      object-fit:cover;
-    }
-    #about .about-text{max-width:700px;text-align:left;}
-    .dropdown{
-      margin:20px auto;
-      width:90%;
-      max-width:600px;
-      background:white;
-      border-radius:10px;
-      box-shadow:0 3px 10px rgba(0,0,0,0.2);
-      overflow:hidden;
-    }
-    .dropdown h3{
-      background:#064bbb;
-      color:white;
-      padding:10px;
-      cursor:pointer;
-      font-size:18px;
-    }
-    .dropdown-content{
-      display:none;
-      background:#f1f1f1;
-      padding:15px 25px;
-      text-align:left;
-    }
-    .dropdown-content ul{list-style-type:disc;padding-left:25px;}
-    .dropdown-content li{margin-bottom:8px;cursor:pointer;}
-    .dropdown-content li:hover{color:#064bbb;text-decoration:underline;}
-    .btn{
-      display:inline-block;
-      color:white;
-      padding:12px 20px;
-      border-radius:8px;
-      margin:10px;
-      text-decoration:none;
-      font-weight:600;
-      box-shadow:0 3px 6px rgba(0,0,0,0.2);
-      transition:transform 0.2s;
-    }
-    .btn:hover{transform:scale(1.05);}
-    .btn-whatsapp{background:#25d366;}
-    .btn-facebook{background:#1877f2;}
-    .btn-youtube{background:#ff0000;}
-    .floating-whatsapp,
-    .floating-help{
-      position:fixed;
-      bottom:20px;
-      color:white;
-      padding:15px 20px;
-      border-radius:10px;
-      box-shadow:0 4px 10px rgba(0,0,0,0.3);
-      font-size:16px;
-      cursor:pointer;
-      text-align:center;
-      z-index:1000;
-      font-weight:600;
-      text-decoration:none;
-    }
-    .floating-whatsapp{left:20px;background:#25d366;}
-    .floating-help{right:20px;background:#ff9800;}
-    .hire-btn{
-      background-color:#ff4b2b;
-      color:white;
-      border:none;
-      border-radius:8px;
-      font-size:20px;
-      font-weight:600;
-      padding:15px 35px;
-      cursor:pointer;
-      box-shadow:0 5px 10px rgba(0,0,0,0.4);
-      transition:transform 0.2s,opacity 0.3s;
-      margin-top:20px;
-    }
-    .hire-btn:hover{opacity:0.9;transform:scale(1.05);}
-    .form-popup{
-      display:none;
-      position:fixed;
-      top:0;
-      left:0;
-      width:100%;
-      height:100%;
-      background-color:rgba(0,0,0,0.6);
-      justify-content:center;
-      align-items:center;
-      z-index:1000;
-    }
-    .form-popup form{
-      background:#fff;
-      padding:25px;
-      border-radius:15px;
-      width:320px;
-      box-shadow:0 5px 15px rgba(0,0,0,0.3);
-    }
-    .form-popup form input,
-    .form-popup form textarea{
-      width:100%;
-      padding:8px;
-      margin:8px 0;
-      border:1px solid #ddd;
-      border-radius:5px;
-    }
-    .form-popup form button{
-      color:white;
-      border:none;
-      padding:10px 20px;
-      border-radius:8px;
-      cursor:pointer;
-      font-weight:bold;
-      margin:5px;
-    }
-    .form-popup form button[type="submit"]{
-      background:#064bbb;
-    }
-    .form-popup form button[type="button"]{
-      background:#ff0000;
-    }
-    .form-popup form button:hover{opacity:0.85;}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BRIANSEVERALL SOLUTIONS</title>
+<link rel="icon" type="image/jpeg" href="favicon.jpg">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Poppins",sans-serif;}
+html{scroll-behavior:smooth;}
+body{background-color:#c2e9fb;color:#212121;line-height:1.6;}
 
-    marquee{background:#0cf12b;color:white;font-weight:bold;padding:8px;}
-    footer{text-align:center;padding:10px;color:#064bbb;font-weight:600;}
+/* Header */
+header{background:#064bbb;color:white;padding:25px 10px;border-bottom:4px solid #0cf12b;display:flex;align-items:center;justify-content:center;position:relative;text-align:center;}
+header img.logo{position:absolute;left:20px;width:110px;height:110px;border-radius:50%;object-fit:cover;border:3px solid white;box-shadow:0 3px 8px rgba(0,0,0,0.5);}
+header h1{font-size:2rem;}
 
-    .feedback{
-      background:rgba(255,255,255,0.9);
-      border-radius:10px;
-      max-width:900px;
-      margin:30px auto;
-      padding:25px;
-      box-shadow:0 3px 10px rgba(0,0,0,0.2);
-    }
-    .feedback-card{
-      display:flex;
-      align-items:center;
-      background:#f1f7fc;
-      border-radius:10px;
-      padding:10px;
-      margin:10px 0;
-    }
-    .feedback-avatar{
-      width:60px;
-      height:60px;
-      border-radius:50%;
-      margin-right:15px;
-      background:#064bbb;
-      color:white;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:24px;
-      font-weight:bold;
-      text-transform:uppercase;
-    }
-    .feedback-form input,
-    .feedback-form select,
-    .feedback-form textarea{
-      width:100%;
-      padding:10px;
-      margin:8px 0;
-      border:1px solid #ccc;
-      border-radius:8px;
-    }
-    .feedback-form button{
-      background:#064bbb;
-      color:white;
-      border:none;
-      padding:10px 20px;
-      border-radius:8px;
-      cursor:pointer;
-      font-weight:bold;
-    }
-    .feedback-form button:hover{background:#0b60d1;}
-    .gallery-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-      gap:15px;
-      margin-top:20px;
-    }
-    .gallery-grid img{
-      width:100%;
-      border-radius:10px;
-      box-shadow:0 3px 10px rgba(0,0,0,0.3);
-    }
-  </style>
+/* Navigation */
+nav{display:flex;justify-content:center;flex-wrap:wrap;background:#0cf12b;position:sticky;top:0;z-index:999;}
+nav a{color:white;text-decoration:none;padding:12px 18px;display:inline-block;font-weight:600;}
+nav a:hover{background:#064bbb;}
+
+/* Sections */
+section{padding:40px 20px;text-align:center;}
+h2{color:#064bbb;margin-bottom:15px;}
+
+/* Home */
+#home{background-size:cover;background-position:center;animation:homeSlideshow 20s infinite alternate;color:white;padding:100px 20px;text-shadow:2px 2px 5px #000;position:relative;}
+@keyframes homeSlideshow{
+0%{background-image:url("https://i.postimg.cc/bdXxs0XH/Whats-App-Image-2025-06-13-at-12-26-01.jpg");}
+25%{background-image:url("https://i.postimg.cc/5y9ZpNJD/Whats-App-Image-2025-06-13-at-16-43-44-1.jpg");}
+50%{background-image:url("https://i.postimg.cc/mDyvQ1vQ/Whats-App-Image-2025-06-13-at-16-43-44.jpg");}
+75%{background-image:url("https://uploads.onecompiler.io/43unes7px/43zcagjgh/WhatsApp%20Image%202025-10-11%20at%2023.16.24.jpeg");}
+100%{background-image:url("https://i.postimg.cc/T1fNpXr3/Whats-App-Image-2025-06-13-at-12-11-17.jpg");}
+}
+
+/* About */
+#about{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:20px;}
+#about img{width:375px;height:250px;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.4);object-fit:cover;}
+#about .about-text{max-width:700px;text-align:left;}
+
+/* Dropdown Services */
+.dropdown{margin:20px auto;width:90%;max-width:600px;background:white;border-radius:10px;box-shadow:0 3px 10px rgba(0,0,0,0.2);overflow:hidden;}
+.dropdown h3{background:#064bbb;color:white;padding:10px;cursor:pointer;font-size:18px;}
+.dropdown-content{display:none;background:#f1f1f1;padding:15px 25px;text-align:left;}
+.dropdown-content ul{list-style-type:disc;padding-left:25px;}
+.dropdown-content li{margin-bottom:8px;cursor:pointer;}
+.dropdown-content li:hover{color:#064bbb;text-decoration:underline;}
+
+/* Buttons */
+.btn{display:inline-block;color:white;padding:12px 20px;border-radius:8px;margin:10px;text-decoration:none;font-weight:600;box-shadow:0 3px 6px rgba(0,0,0,0.2);transition:transform 0.2s;}
+.btn:hover{transform:scale(1.05);}
+.btn-whatsapp{background:#25d366;}
+.btn-facebook{background:#1877f2;}
+.btn-youtube{background:#ff0000;}
+
+/* Floating Buttons */
+.floating-whatsapp,.floating-help{position:fixed;bottom:20px;color:white;padding:15px 20px;border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,0.3);font-size:16px;cursor:pointer;text-align:center;z-index:1000;font-weight:600;text-decoration:none;}
+.floating-whatsapp{left:20px;background:#25d366;}
+.floating-help{right:20px;background:#ff9800;}
+
+/* Hire Btn */
+.hire-btn{background-color:#ff4b2b;color:white;border:none;border-radius:8px;font-size:20px;font-weight:600;padding:15px 35px;cursor:pointer;box-shadow:0 5px 10px rgba(0,0,0,0.4);transition:transform 0.2s,opacity 0.3s;margin-top:20px;}
+.hire-btn:hover{opacity:0.9;transform:scale(1.05);}
+
+/* Hire Popup Form */
+.form-popup{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.6);justify-content:center;align-items:center;z-index:1000;}
+.form-popup form{background:#fff;padding:25px;border-radius:15px;width:320px;box-shadow:0 5px 15px rgba(0,0,0,0.3);}
+.form-popup form input,.form-popup form textarea{width:100%;padding:8px;margin:8px 0;border:1px solid #ddd;border-radius:5px;}
+.form-popup form button{color:white;border:none;padding:10px 20px;border-radius:8px;cursor:pointer;font-weight:bold;margin:5px;}
+.form-popup form button[type="submit"]{background:#064bbb;}
+.form-popup form button[type="button"]{background:#ff0000;}
+.form-popup form button:hover{opacity:0.85;}
+
+/* Marquee */
+marquee{background:#0cf12b;color:white;font-weight:bold;padding:8px;}
+
+/* Footer */
+footer{text-align:center;padding:10px;color:#064bbb;font-weight:600;}
+
+/* Feedback */
+.feedback{background:rgba(255,255,255,0.9);border-radius:10px;max-width:900px;margin:30px auto;padding:25px;box-shadow:0 3px 10px rgba(0,0,0,0.2);}
+.feedback-card{display:flex;align-items:center;background:#f1f7fc;border-radius:10px;padding:10px;margin:10px 0;}
+.feedback-avatar{width:60px;height:60px;border-radius:50%;margin-right:15px;background:#064bbb;color:white;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:bold;text-transform:uppercase;}
+.feedback-form input,.feedback-form select,.feedback-form textarea{width:100%;padding:10px;margin:8px 0;border:1px solid #ccc;border-radius:8px;}
+.feedback-form button{background:#064bbb;color:white;border:none;padding:10px 20px;border-radius:8px;cursor:pointer;font-weight:bold;}
+.feedback-form button:hover{background:#0b60d1;}
+
+/* Gallery */
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px;margin-top:20px;}
+.gallery-grid img{width:100%;border-radius:10px;box-shadow:0 3px 10px rgba(0,0,0,0.3);}
+
+/* Floating CV Button */
+.cv-float {position: fixed;top: 20px;right: 20px;z-index:9999;display: inline-flex;align-items: center;gap: 10px;padding: 12px 22px;background: linear-gradient(135deg, #0a66c2, #084b8a);color: #fff;font-size: 15px;font-weight: 600;text-decoration: none;border-radius: 50px;box-shadow: 0 8px 20px rgba(0,0,0,0.25);transition: transform 0.25s ease, box-shadow 0.25s ease;}
+.cv-float:hover {transform: translateY(-3px);box-shadow: 0 12px 26px rgba(0,0,0,0.3);}
+@keyframes shake {0% { transform: translateX(0); }15% { transform: translateX(-2px); }30% { transform: translateX(2px); }45% { transform: translateX(-2px); }60% { transform: translateX(2px); }100% { transform: translateX(0); }}
+.shake {animation: shake 3s infinite;}
+</style>
 </head>
 <body>
-  <header>
-    
-    <div>
-      <h1>Welcome to BRIANSEVERALL SOLUTIONS</h1>
-      <p>Your Trusted Tech Partner</p>
-    </div>
-  </header>
 
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#about">About Us</a>
-    <a href="#services">Services We Offer</a>
-    <a href="#feedback">Client Feedback</a>
-    <a href="#contact">Contact Us</a>
-  </nav>
+<header>
+<div>
+<h1>Welcome to BRIANSEVERALL SOLUTIONS</h1>
+<p>Your Trusted Tech Partner</p>
+</div>
+</header>
 
-  <section id="home">
-    <h2>Empowering You Through Technology</h2>
-    <p>We build digital solutions that transform your business and simplify your life.</p>
-    <button class="hire-btn" id="hireMeBtn">Click to Hire Us</button>
-  </section>
+<nav>
+<a href="#home">Home</a>
+<a href="#about">About Us</a>
+<a href="#services">Services We Offer</a>
+<a href="#feedback">Client Feedback</a>
+<a href="#contact">Contact Us</a>
+</nav>
 
-  <section id="about">
-    <img src="https://i.postimg.cc/T1fNpXr3/Whats-App-Image-2025-06-13-at-12-11-17.jpg" alt="CEO Photo">
-    <div class="about-text">
-      <h2>About Me (CEO)</h2>
-      <p>Hi, I’m Brian Kiprop Bett, a dedicated web developer and ICT specialist proudly rooted in Nandi Hills, Kenya. With a Diploma in Information Communication Technology (ICT), I’ve immersed myself in the ever-evolving digital world, equipping myself with skills to solve real-world problems using technology. My journey in ICT began with a strong desire to bridge the digital gap in my community and help businesses transition into the digital age. From building dynamic websites to offering hands-on tech support, I’ve committed my career to helping others grow through technology.
+<section id="home">
+<h2>Empowering You Through Technology</h2>
+<p>We build digital solutions that transform your business and simplify your life.</p>
+<button class="hire-btn" id="hireMeBtn">Click to Hire Us</button>
+</section>
+
+<section id="about">
+<img src="https://i.postimg.cc/T1fNpXr3/Whats-App-Image-2025-06-13-at-12-11-17.jpg" alt="CEO Photo">
+<div class="about-text">
+<h2>About Me (CEO)</h2>
+<p>Hi, I’m Brian Kiprop Bett, a dedicated web developer and ICT specialist proudly rooted in Nandi Hills, Kenya. With a Diploma in Information Communication Technology (ICT), I’ve immersed myself in the ever-evolving digital world, equipping myself with skills to solve real-world problems using technology. My journey in ICT began with a strong desire to bridge the digital gap in my community and help businesses transition into the digital age. From building dynamic websites to offering hands-on tech support, I’ve committed my career to helping others grow through technology.
 
 I specialize in a wide range of ICT services, including web development, system administration, cyber services, computer networking, programming, virtual assistance, and general digital support. Whether you need a secure business system, a clean website, or expert help in managing your ICT infrastructure, I’m here to deliver reliable, professional solutions. Each project I handle is guided by the goal of using technology to empower individuals and organizations, and to make a lasting impact in the digital space.</p>
-    </div>
-  </section>
-  
-</section> <section id="gallery">    
-    <h2>Gallery</h2>    
-    <div class="gallery-grid">    
-      <img src="https://i.postimg.cc/mDyvQ1vQ/Whats-App-Image-2025-06-13-at-16-43-44.jpg" alt="Gallery 1">    
-      <img src="https://i.postimg.cc/5y9ZpNJD/Whats-App-Image-2025-06-13-at-16-43-44-1.jpg" alt="Gallery 2">    
-      <img src="https://i.postimg.cc/T1fNpXr3/Whats-App-Image-2025-06-13-at-12-11-17.jpg" alt="Gallery 3">    
-    </div>  
-    
-  <section id="services">
-    <h2>Services We Offer</h2>
-    <div class="dropdown">
-      <h3 onclick="toggleDropdown('ict')">Click for ICT Proficiency Services</h3>
-      <div id="ict" class="dropdown-content">
-        <ul>
-          <li>System Administration</li>
-          <li>Web Design & Development</li>
-          <li>Networking & Cybersecurity</li>
-          <li>Database Design & Management</li>
-          <li>Software Installation & Troubleshooting</li>
-          <li>Cloud Computing & Virtualization</li>
-          <li>IT Support & Help Desk Services</li>
-          <li>Virtual Assistance</li>
-        </ul>
-      </div>
-    </div>
-    <div class="dropdown">
-      <h3 onclick="toggleDropdown('cyber')">Click for Cyber Services</h3>
-      <div id="cyber" class="dropdown-content">
-        <ul>
-          <li>KRA Service</li>
-          <li>SHA Registration</li>
-          <li>HELB & Scholarship</li>
-          <li>Filing of Return</li>
-          <li>Trade and Business Plan Writing</li>
-          <li>KUCCPS Application</li>
-          <li>Good Conduct Download</li>
-          <li>CV Writing</li>
-          <li>Posters & Flyers Design</li>
-          <li>Certificate Design</li>
-          <li>Wedding Cards</li>
-          <li>Harambee Cards</li>
-          <li>Pre-wedding Cards</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+</div>
+</section>
 
-  <section id="feedback" class="feedback">
-    <h2>Client Feedback</h2>
-    <div id="feedbackList"></div>
-    <h3>Add Your Feedback</h3>
-    <form id="feedbackForm" class="feedback-form">
-      <input type="text" id="fbName" placeholder="Your Name" required>
-      <select id="fbGender" required>
-        <option value="">Select Gender</option>
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-      </select>
-      <textarea id="fbText" placeholder="Your Feedback" required></textarea>
-      <button type="submit">Submit Feedback</button>
-    </form>
-  </section>
+<section id="gallery">
+<h2>Gallery</h2>
+<div class="gallery-grid">
+<img src="https://i.postimg.cc/mDyvQ1vQ/Whats-App-Image-2025-06-13-at-16-43-44.jpg" alt="Gallery 1">
+<img src="https://i.postimg.cc/5y9ZpNJD/Whats-App-Image-2025-06-13-at-16-43-44-1.jpg" alt="Gallery 2">
+<img src="https://i.postimg.cc/T1fNpXr3/Whats-App-Image-2025-06-13-at-12-11-17.jpg" alt="Gallery 3">
+</div>
+</section>
 
-  <section id="contact">
-    <h2>Contact Us</h2>
-    <a href="https://wa.me/254115769984" class="btn btn-whatsapp">💬 Chat With Us on WhatsApp</a>
-    <a href="https://www.facebook.com/BRIANSEVERALL10" class="btn btn-facebook">📘 Follow Us on Facebook</a>
-    <a href="https://youtube.com/@brianseverall?si=R24sr054p8lAyEY7" class="btn btn-youtube">▶️ Watch Us on YouTube</a>
-  </section>
+<section id="services">
+<h2>Services We Offer</h2>
+<div class="dropdown">
+<h3 onclick="toggleDropdown('ict')">Click for ICT Proficiency Services</h3>
+<div id="ict" class="dropdown-content">
+<ul>
+<li>System Administration</li>
+<li>Web Design & Development</li>
+<li>Networking & Cybersecurity</li>
+<li>Database Design & Management</li>
+<li>Software Installation & Troubleshooting</li>
+<li>Cloud Computing & Virtualization</li>
+<li>IT Support & Help Desk Services</li>
+<li>Virtual Assistance</li>
+</ul>
+</div>
+</div>
+<div class="dropdown">
+<h3 onclick="toggleDropdown('cyber')">Click for Cyber Services</h3>
+<div id="cyber" class="dropdown-content">
+<ul>
+<li>KRA Service</li>
+<li>SHA Registration</li>
+<li>HELB & Scholarship</li>
+<li>Filing of Return</li>
+<li>Trade and Business Plan Writing</li>
+<li>KUCCPS Application</li>
+<li>Good Conduct Download</li>
+<li>CV Writing</li>
+<li>Posters & Flyers Design</li>
+<li>Certificate Design</li>
+<li>Wedding Cards</li>
+<li>Harambee Cards</li>
+<li>Pre-wedding Cards</li>
+</ul>
+</div>
+</div>
+</section>
 
-  <marquee behavior="scroll" direction="left" scrollamount="4">
-    🚀 Welcome to Brianseverall Solutions | Your Tech Partner | Call: +254754415514 | WhatsApp: 0115769984 | #DigitalKenya 💻🌐
-  </marquee>
+<section id="feedback" class="feedback">
+<h2>Client Feedback</h2>
+<div id="feedbackList"></div>
+<h3>Add Your Feedback</h3>
+<form id="feedbackForm" class="feedback-form">
+<input type="text" id="fbName" placeholder="Your Name" required>
+<select id="fbGender" required>
+<option value="">Select Gender</option>
+<option value="male">Male</option>
+<option value="female">Female</option>
+</select>
+<textarea id="fbText" placeholder="Your Feedback" required></textarea>
+<button type="submit">Submit Feedback</button>
+</form>
+</section>
 
-  <footer>&copy; 2026 Brianseverall Solutions | All Rights Reserved</footer>
-  <a class="floating-whatsapp" href="https://wa.me/254115769984" target="_blank">💬 WhatsApp</a>
-  <a class="floating-help" href="tel:+254754415514">CLICK FOR HELP</a>
+<section id="contact">
+<h2>Contact Us</h2>
+<a href="https://wa.me/254115769984" class="btn btn-whatsapp">💬 Chat With Us on WhatsApp</a>
+<a href="https://www.facebook.com/BRIANSEVERALL10" class="btn btn-facebook">📘 Follow Us on Facebook</a>
+<a href="https://youtube.com/@brianseverall?si=R24sr054p8lAyEY7" class="btn btn-youtube">▶️ Watch Us on YouTube</a>
+</section>
 
-  <!-- Hire Us Popup -->
-  <div id="hireFormPopup" class="form-popup">
-    <form id="hireForm" action="https://formsubmit.co/brianseverallsolutions@gmail.com" method="POST">
-      <h2>Hire Us</h2>
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="email" placeholder="Your Email" required />
-      <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
-      <button type="button" id="closeFormBtn">Cancel</button>
-    </form>
-  </div>
+<marquee behavior="scroll" direction="left" scrollamount="4">
+🚀 Welcome to Brianseverall Solutions | Your Tech Partner | Call: +254754415514 | WhatsApp: 0115769984 | #DigitalKenya 💻🌐
+</marquee>
 
-  <script>
-    const hirePopup = document.getElementById("hireFormPopup");
-    const closeBtn = document.getElementById("closeFormBtn");
-    document.getElementById("hireMeBtn").addEventListener("click", () => hirePopup.style.display = "flex");
-    closeBtn.addEventListener("click", () => hirePopup.style.display = "none");
+<footer>&copy; 2026 Brianseverall Solutions | All Rights Reserved</footer>
 
-    function toggleDropdown(id){
-      const content=document.getElementById(id);
-      content.style.display=(content.style.display==="block")?"none":"block";
-    }
+<!-- Floating Buttons -->
+<a class="floating-whatsapp" href="https://wa.me/254115769984" target="_blank">💬 WhatsApp</a>
+<a class="floating-help" href="tel:+254754415514">CLICK FOR HELP</a>
 
-    document.querySelectorAll(".dropdown-content li").forEach(item => {
-      item.addEventListener("click", () => {
-        hirePopup.style.display = "flex";
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
-    });
+<!-- Floating CV Button -->
+<a href="cv.pdf" download class="cv-float shake"><i class="fa fa-file-pdf"></i> Download CV</a>
 
-    // Feedback section
-    const feedbackForm=document.getElementById("feedbackForm");
-    const feedbackList=document.getElementById("feedbackList");
+<!-- Hire Form Popup -->
+<div id="hireFormPopup" class="form-popup">
+<form id="hireForm" action="https://formsubmit.co/brianseverallsolutions@gmail.com" method="POST">
+<h2>Hire Us</h2>
+<input type="text" name="name" placeholder="Your Name" required>
+<input type="email" name="email" placeholder="Your Email" required>
+<textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+<button type="submit">Send Message</button>
+<button type="button" id="closeFormBtn">Cancel</button>
+</form>
+</div>
 
-    function renderFeedback(){
-      feedbackList.innerHTML="";
-      const feedbacks=JSON.parse(localStorage.getItem("feedbacks")||"[]");
-      feedbacks.forEach(f=>{
-        const div=document.createElement("div");
-        div.className="feedback-card";
-        const initial=f.name.charAt(0).toUpperCase();
-        div.innerHTML=`
-          <div class='feedback-avatar'>${initial}</div>
-          <div><strong>${f.name}</strong><p>${f.text}</p></div>`;
-        feedbackList.appendChild(div);
-      });
-    }
+<script>
+// Hire popup
+const hirePopup = document.getElementById("hireFormPopup");
+const closeBtn = document.getElementById("closeFormBtn");
 
-    feedbackForm.addEventListener("submit", e=>{
-      e.preventDefault();
-      const name=document.getElementById("fbName").value.trim();
-      const gender=document.getElementById("fbGender").value;
-      const text=document.getElementById("fbText").value.trim();
-      const feedbacks=JSON.parse(localStorage.getItem("feedbacks")||"[]");
-      feedbacks.push({name,gender,text});
-      localStorage.setItem("feedbacks",JSON.stringify(feedbacks));
-      feedbackForm.reset();
-      renderFeedback();
-    });
-    renderFeedback();
-  </script>
+// Open Hire Form when Hire Me button is clicked
+document.getElementById("hireMeBtn").addEventListener("click", () => hirePopup.style.display = "flex");
+
+// Close Hire Form
+closeBtn.addEventListener("click", () => hirePopup.style.display = "none");
+
+// Dropdown toggle
+function toggleDropdown(id){
+  const content = document.getElementById(id);
+  content.style.display = (content.style.display === "block") ? "none" : "block";
+}
+
+// Open Hire Form when any service item is clicked
+document.querySelectorAll(".dropdown-content li").forEach(item => {
+  item.addEventListener("click", () => {
+    hirePopup.style.display = "flex";
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+});
+
+// Feedback system
+const feedbackForm = document.getElementById("feedbackForm");
+const feedbackList = document.getElementById("feedbackList");
+
+function renderFeedback(){
+  feedbackList.innerHTML = "";
+  const feedbacks = JSON.parse(localStorage.getItem("feedbacks") || "[]");
+  feedbacks.forEach(f => {
+    const div = document.createElement("div");
+    div.className = "feedback-card";
+    const initial = f.name.charAt(0).toUpperCase();
+    div.innerHTML = `<div class='feedback-avatar'>${initial}</div><div><strong>${f.name}</strong><p>${f.text}</p></div>`;
+    feedbackList.appendChild(div);
+  });
+}
+
+feedbackForm.addEventListener("submit", e => {
+  e.preventDefault();
+  const name = document.getElementById("fbName").value.trim();
+  const gender = document.getElementById("fbGender").value;
+  const text = document.getElementById("fbText").value.trim();
+  const feedbacks = JSON.parse(localStorage.getItem("feedbacks") || "[]");
+  feedbacks.push({name, gender, text});
+  localStorage.setItem("feedbacks", JSON.stringify(feedbacks));
+  feedbackForm.reset();
+  renderFeedback();
+});
+
+renderFeedback();
+</script>
 </body>
 </html>
