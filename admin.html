@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin - Brianseverall Solutions</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap">
+<style>
+body { font-family:"Poppins",sans-serif; background:#c2e9fb; display:flex; flex-direction:column; align-items:center; justify-content:center; height:100vh; margin:0; }
+h1 { color:#064bbb; margin-bottom:20px; text-align:center; }
+input { padding:10px; margin:10px 0; border-radius:5px; border:1px solid #ddd; width:250px; }
+button { padding:10px 20px; margin:10px; border:none; border-radius:8px; font-weight:bold; cursor:pointer; color:white; }
+button.login { background:#064bbb; }
+button.cancel { background:red; }
+.admin-links { display:none; margin-top:20px; text-align:center; }
+.admin-links a { display:block; margin:10px 0; padding:12px 20px; background:#0cf12b; color:white; text-decoration:none; border-radius:8px; font-weight:bold; }
+.admin-links a:hover { background:#064bbb; }
+</style>
+</head>
+<body>
+
+<h1>Admin Login</h1>
+<div id="loginForm">
+  <input type="text" id="adminUser" placeholder="Username" required><br>
+  <input type="password" id="adminPass" placeholder="Password" required><br>
+  <button class="login" onclick="loginAdmin()">Login</button>
+  <button class="cancel" onclick="cancelAdmin()">Cancel</button>
+</div>
+
+<div class="admin-links" id="adminLinks">
+  <h2>Welcome, Admin!</h2>
+  <a href="https://mercybettserver.github.io/invoive.github.io/" target="_blank">📄 Invoice & Quotation</a>
+  <a href="https://brianseverallserver.github.io/" target="_blank">🧾 Receipt System</a>
+</div>
+
+<script>
+function loginAdmin(){
+  const user = document.getElementById("adminUser").value;
+  const pass = document.getElementById("adminPass").value;
+  if(user === "admin" && pass === "580580"){
+    document.getElementById("loginForm").style.display = "none";
+    document.getElementById("adminLinks").style.display = "block";
+  } else {
+    alert("Wrong password! Access denied.");
+  }
+}
+function cancelAdmin(){
+  document.getElementById("adminUser").value = "";
+  document.getElementById("adminPass").value = "";
+}
+</script>
+
+</body>
+</html>
