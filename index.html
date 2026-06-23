@@ -296,6 +296,55 @@ feedbackForm.addEventListener("submit", e => {
 });
 
 renderFeedback();
+  function showWarning() {
+    if (document.getElementById("dev-warning-popup")) return;
+
+    const popup = document.createElement("div");
+    popup.id = "dev-warning-popup";
+
+    popup.innerHTML = `
+        <div style="
+            position:fixed;
+            top:20px;
+            right:20px;
+            background:#fff;
+            padding:20px;
+            border-radius:15px;
+            box-shadow:0 4px 15px rgba(0,0,0,0.25);
+            text-align:center;
+            z-index:99999;
+            width:250px;
+            font-family:Arial,sans-serif;
+        ">
+            <div style="font-size:70px;">😂</div>
+            <h3>Nice try!</h3>
+            <p>😂 Nice try my friend! Contact <b>BRIANSEVERALL</b> if you need help.</p>
+        </div>
+    `;
+
+    document.body.appendChild(popup);
+
+    setTimeout(() => {
+        popup.remove();
+    }, 5000);
+}
+
+document.addEventListener('keydown', function(e) {
+    if (
+        e.key === 'F12' ||
+        (e.ctrlKey && e.key.toLowerCase() === 'u') ||
+        (e.ctrlKey && e.shiftKey &&
+        ['i', 'j', 'c'].includes(e.key.toLowerCase()))
+    ) {
+        e.preventDefault();
+        showWarning();
+    }
+});
+
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    showWarning();
+});
 </script>
 </body>
 </html>
