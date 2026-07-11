@@ -119,29 +119,49 @@
   /* ---------- EYE-CATCHING SERVICE CARD FRAME ---------- */
   .svc-card{
     position:relative;
-    border:1px solid transparent;
+    border:3px solid transparent;
+    border-radius:16px;
     background-image:
       linear-gradient(rgb(15,23,42), rgb(15,23,42)),
-      linear-gradient(135deg, rgba(34,211,238,.9), rgba(6,182,212,.15) 35%, rgba(34,211,238,.6) 70%, rgba(103,232,249,.9));
+      linear-gradient(115deg, #22d3ee, #3b82f6, #a855f7, #d946ef, #f472b6, #f87171, #fbbf24, #facc15, #34d399, #22d3ee);
     background-origin:border-box;
     background-clip:padding-box, border-box;
-    box-shadow:0 4px 18px rgba(2,6,23,.45);
+    background-size:100% 100%, 400% 400%;
+    box-shadow:0 4px 22px rgba(2,6,23,.5), 0 0 0 1px rgba(255,255,255,.03);
     display:flex; flex-direction:column;
+    animation:svcBorderShift 6s linear infinite;
   }
   .svc-card > *:last-child{ margin-top:auto; }
+  @keyframes svcBorderShift{
+    0%{ background-position:0 0, 0% 50%; }
+    50%{ background-position:0 0, 100% 50%; }
+    100%{ background-position:0 0, 0% 50%; }
+  }
+  .svc-card:nth-child(2n){ animation-duration:7.5s; }
+  .svc-card:nth-child(3n){ animation-duration:8.5s; }
   body.light-theme .svc-card{
     background-image:
       linear-gradient(#ffffff, #ffffff),
-      linear-gradient(135deg, rgba(8,145,178,.85), rgba(8,145,178,.1) 35%, rgba(8,145,178,.5) 70%, rgba(8,145,178,.9));
+      linear-gradient(115deg, #0891b2, #2563eb, #9333ea, #c026d3, #db2777, #dc2626, #d97706, #ca8a04, #059669, #0891b2);
+    background-size:100% 100%, 400% 400%;
   }
 
-  /* ---------- SHAKING HIRE US BUTTON (service cards) ---------- */
+  /* ---------- SHAKING "CLICK FOR SERVICE" BUTTON (service cards) ---------- */
   .hire-btn{
-    box-shadow:0 6px 16px rgba(6,182,212,.35);
+    box-shadow:0 6px 18px rgba(6,182,212,.4);
     transition:transform .2s ease, box-shadow .2s ease;
     text-decoration:none;
+    background:linear-gradient(115deg, #22d3ee, #3b82f6, #a855f7, #d946ef, #f472b6, #f87171, #fbbf24, #facc15, #34d399, #22d3ee) !important;
+    background-size:400% 400% !important;
+    animation:shake 3s infinite, btnGradientShift 5s linear infinite !important;
+    color:#001018 !important;
   }
-  .hire-btn:hover{ transform:translateY(-2px) scale(1.02); box-shadow:0 10px 22px rgba(6,182,212,.5); }
+  @keyframes btnGradientShift{
+    0%{ background-position:0% 50%; }
+    50%{ background-position:100% 50%; }
+    100%{ background-position:0% 50%; }
+  }
+  .hire-btn:hover{ transform:translateY(-2px) scale(1.02); box-shadow:0 10px 24px rgba(6,182,212,.55); }
   .shake-btn{ animation:shake 3s infinite; }
   .svc-card:nth-child(2n) .shake-btn{ animation-delay:.4s; }
   .svc-card:nth-child(3n) .shake-btn{ animation-delay:.9s; }
@@ -300,6 +320,69 @@
     border-top-color:rgba(8,145,178,.6);
     border-right-color:rgba(8,145,178,.6);
   }
+
+  /* ---------- QUICK SERVICE REQUEST MODAL ---------- */
+  #service-modal-overlay{
+    position:fixed; inset:0; z-index:100;
+    background:rgba(2,6,23,.72);
+    backdrop-filter:blur(3px);
+    display:none;
+    align-items:center; justify-content:center;
+    padding:16px;
+  }
+  #service-modal-overlay.open{ display:flex; }
+  #service-modal{
+    width:100%; max-width:440px;
+    background:rgb(15,23,42);
+    border:1px solid rgba(34,211,238,.35);
+    border-radius:18px;
+    padding:24px;
+    box-shadow:0 20px 60px rgba(2,6,23,.6), 0 0 0 1px rgba(34,211,238,.1);
+    transform:scale(.85); opacity:0;
+    animation:modalPop .28s cubic-bezier(.34,1.56,.64,1) forwards;
+  }
+  @keyframes modalPop{ to{ transform:scale(1); opacity:1; } }
+  body.light-theme #service-modal{
+    background:#ffffff; border-color:rgba(8,145,178,.35);
+  }
+  #service-modal h3{
+    color:#67e8f9; font-weight:800; font-size:19px; margin-bottom:4px;
+  }
+  body.light-theme #service-modal h3{ color:#0891b2; }
+  #service-modal p.modal-sub{
+    color:#94a3b8; font-size:13px; margin-bottom:16px;
+  }
+  #service-modal label{
+    display:block; color:#cbd5e1; font-size:13px; margin-bottom:4px;
+  }
+  body.light-theme #service-modal label{ color:#334155; }
+  #service-modal input, #service-modal textarea{
+    width:100%; padding:9px 12px; margin-bottom:12px;
+    background:rgb(30,41,59); border:1px solid rgba(34,211,238,.25);
+    border-radius:9px; color:#f1f5f9; font-size:14px;
+  }
+  body.light-theme #service-modal input, body.light-theme #service-modal textarea{
+    background:#ffffff; color:#0f172a; border-color:rgba(8,145,178,.3);
+  }
+  #service-modal .modal-btn-row{ display:flex; gap:10px; margin-top:6px; }
+  .modal-submit-btn, .modal-cancel-btn{
+    flex:1; padding:10px 14px; border-radius:10px; font-weight:700; font-size:14px;
+    border:none; cursor:pointer; transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .modal-submit-btn{
+    background:linear-gradient(135deg, #22c55e, #16a34a); color:#ffffff;
+    box-shadow:0 6px 16px rgba(34,197,94,.35);
+  }
+  .modal-cancel-btn{
+    background:linear-gradient(135deg, #ef4444, #dc2626); color:#ffffff;
+    box-shadow:0 6px 16px rgba(239,68,68,.35);
+  }
+  .modal-submit-btn:hover, .modal-cancel-btn:hover{ transform:translateY(-2px); }
+  .modal-submit-btn:disabled{ opacity:.6; cursor:not-allowed; transform:none; }
+  #service-modal-status{
+    margin-top:12px; text-align:center; font-size:13px; color:#34d399; display:none;
+  }
+  #service-modal-status.error{ color:#f87171; }
   </style>
   <script src="/_sdk/9432170dbd2ae0df.resizing_sdk.js" type="text/javascript" integrity="sha512-FeT+58sb1f9ejWPWFjCbJvTT+SDwGV+ngrHUnlO7TWEOoqwOLj6p256kO3vOL7DIWl1cIgrobiof8v2bOigwPg=="></script>
   <script src="/_sdk/0179d719c431a79e.data_sdk.js" type="text/javascript" integrity="sha512-OsRvJkI5GkC3MJQcgotQYotpzrMSX415GiKKgvYdxQEEkzD/fdchShO2FMSy0PJr/tiINMXOk5Vl2zAgg6bUiA=="></script>
@@ -442,55 +525,55 @@
        <i data-lucide="laptop" class="text-cyan-400 mb-3"></i>
        <h4 data-template-id="svc-1-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 18px;">Web Design &amp; Development</h4>
        <p data-template-id="svc-1-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Modern websites, web apps and eCommerce systems.</p>
-       <a href="#" data-tab-link="contact" data-template-id="svc-1-hire" class="hire-btn shake-btn mt-4 inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg font-semibold" style="background: linear-gradient(135deg, rgb(6,182,212), rgb(8,145,178)); color: rgb(0,16,24); font-weight:700; font-size:14px;"><i data-lucide="zap" style="width:15px;height:15px;"></i>Click for Service</a>
+       <a href="#" data-template-id="svc-1-hire" class="hire-btn shake-btn open-service-modal mt-4 inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg font-semibold" data-service="Web Design & Development" style="background: linear-gradient(135deg, rgb(6,182,212), rgb(8,145,178)); color: rgb(0,16,24); font-weight:700; font-size:14px;"><i data-lucide="zap" style="width:15px;height:15px;"></i>Click for Service</a>
       </div>
       <div data-template-id="svc-2" class="svc-card canva-card relative scanline p-5 rounded-2xl bg-slate-900/60" style="background: rgb(15, 23, 42);">
        <i data-lucide="server" class="text-cyan-400 mb-3"></i>
        <h4 data-template-id="svc-2-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 18px;">System Administration</h4>
        <p data-template-id="svc-2-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Windows &amp; Linux server installation and management.</p>
-       <a href="#" data-tab-link="contact" data-template-id="svc-2-hire" class="hire-btn shake-btn mt-4 inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg font-semibold" style="background: linear-gradient(135deg, rgb(6,182,212), rgb(8,145,178)); color: rgb(0,16,24); font-weight:700; font-size:14px;"><i data-lucide="zap" style="width:15px;height:15px;"></i>Click for Service</a>
+       <a href="#" data-template-id="svc-2-hire" class="hire-btn shake-btn open-service-modal mt-4 inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg font-semibold" data-service="System Administration" style="background: linear-gradient(135deg, rgb(6,182,212), rgb(8,145,178)); color: rgb(0,16,24); font-weight:700; font-size:14px;"><i data-lucide="zap" style="width:15px;height:15px;"></i>Click for Service</a>
       </div>
       <div data-template-id="svc-3" class="svc-card canva-card relative scanline p-5 rounded-2xl bg-slate-900/60" style="background: rgb(15, 23, 42);">
        <i data-lucide="code-2" class="text-cyan-400 mb-3"></i>
        <h4 data-template-id="svc-3-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 18px;">ICT Solutions</h4>
        <p data-template-id="svc-3-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">End-to-end ICT consultancy and digital transformation.</p>
-       <a href="#" data-tab-link="contact" data-template-id="svc-3-hire" class="hire-btn shake-btn mt-4 inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg font-semibold" style="background: linear-gradient(135deg, rgb(6,182,212), rgb(8,145,178)); color: rgb(0,16,24); font-weight:700; font-size:14px;"><i data-lucide="zap" style="width:15px;height:15px;"></i>Click for Service</a>
+       <a href="#" data-template-id="svc-3-hire" class="hire-btn shake-btn open-service-modal mt-4 inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg font-semibold" data-service="ICT Solutions" style="background: linear-gradient(135deg, rgb(6,182,212), rgb(8,145,178)); color: rgb(0,16,24); font-weight:700; font-size:14px;"><i data-lucide="zap" style="width:15px;height:15px;"></i>Click for Service</a>
       </div>
       <div data-template-id="svc-4" class="svc-card canva-card relative scanline p-5 rounded-2xl bg-slate-900/60" style="background: rgb(15, 23, 42);">
        <i data-lucide="shield-check" class="text-cyan-400 mb-3"></i>
        <h4 data-template-id="svc-4-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 18px;">Networking &amp; Cybersecurity</h4>
        <p data-template-id="svc-4-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">LAN/WAN, WiFi setup plus threat protection and defense.</p>
-       <a href="#" data-tab-link="contact" data-template-id="svc-4-hire" class="hire-btn shake-btn mt-4 inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg font-semibold" style="background: linear-gradient(135deg, rgb(6,182,212), rgb(8,145,178)); color: rgb(0,16,24); font-weight:700; font-size:14px;"><i data-lucide="zap" style="width:15px;height:15px;"></i>Click for Service</a>
+       <a href="#" data-template-id="svc-4-hire" class="hire-btn shake-btn open-service-modal mt-4 inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg font-semibold" data-service="Networking & Cybersecurity" style="background: linear-gradient(135deg, rgb(6,182,212), rgb(8,145,178)); color: rgb(0,16,24); font-weight:700; font-size:14px;"><i data-lucide="zap" style="width:15px;height:15px;"></i>Click for Service</a>
       </div>
       <div data-template-id="svc-5" class="svc-card canva-card relative scanline p-5 rounded-2xl bg-slate-900/60" style="background: rgb(15, 23, 42);">
        <i data-lucide="database" class="text-cyan-400 mb-3"></i>
        <h4 data-template-id="svc-5-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 18px;">Database Design &amp; Management</h4>
        <p data-template-id="svc-5-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">MySQL, SQL Server, backups, optimization and design.</p>
-       <a href="#" data-tab-link="contact" data-template-id="svc-5-hire" class="hire-btn shake-btn mt-4 inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg font-semibold" style="background: linear-gradient(135deg, rgb(6,182,212), rgb(8,145,178)); color: rgb(0,16,24); font-weight:700; font-size:14px;"><i data-lucide="zap" style="width:15px;height:15px;"></i>Click for Service</a>
+       <a href="#" data-template-id="svc-5-hire" class="hire-btn shake-btn open-service-modal mt-4 inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg font-semibold" data-service="Database Design & Management" style="background: linear-gradient(135deg, rgb(6,182,212), rgb(8,145,178)); color: rgb(0,16,24); font-weight:700; font-size:14px;"><i data-lucide="zap" style="width:15px;height:15px;"></i>Click for Service</a>
       </div>
       <div data-template-id="svc-6" class="svc-card canva-card relative scanline p-5 rounded-2xl bg-slate-900/60" style="background: rgb(15, 23, 42);">
        <i data-lucide="wrench" class="text-cyan-400 mb-3"></i>
        <h4 data-template-id="svc-6-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 18px;">Software Installation &amp; Troubleshooting</h4>
        <p data-template-id="svc-6-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Fast setup, updates and repair for all your software.</p>
-       <a href="#" data-tab-link="contact" data-template-id="svc-6-hire" class="hire-btn shake-btn mt-4 inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg font-semibold" style="background: linear-gradient(135deg, rgb(6,182,212), rgb(8,145,178)); color: rgb(0,16,24); font-weight:700; font-size:14px;"><i data-lucide="zap" style="width:15px;height:15px;"></i>Click for Service</a>
+       <a href="#" data-template-id="svc-6-hire" class="hire-btn shake-btn open-service-modal mt-4 inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg font-semibold" data-service="Software Installation & Troubleshooting" style="background: linear-gradient(135deg, rgb(6,182,212), rgb(8,145,178)); color: rgb(0,16,24); font-weight:700; font-size:14px;"><i data-lucide="zap" style="width:15px;height:15px;"></i>Click for Service</a>
       </div>
       <div data-template-id="svc-7" class="svc-card canva-card relative scanline p-5 rounded-2xl bg-slate-900/60" style="background: rgb(15, 23, 42);">
        <i data-lucide="cloud" class="text-cyan-400 mb-3"></i>
        <h4 data-template-id="svc-7-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 18px;">Cloud Computing &amp; Virtualization</h4>
        <p data-template-id="svc-7-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Cloud deployment, migration, hosting and virtualization.</p>
-       <a href="#" data-tab-link="contact" data-template-id="svc-7-hire" class="hire-btn shake-btn mt-4 inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg font-semibold" style="background: linear-gradient(135deg, rgb(6,182,212), rgb(8,145,178)); color: rgb(0,16,24); font-weight:700; font-size:14px;"><i data-lucide="zap" style="width:15px;height:15px;"></i>Click for Service</a>
+       <a href="#" data-template-id="svc-7-hire" class="hire-btn shake-btn open-service-modal mt-4 inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg font-semibold" data-service="Cloud Computing & Virtualization" style="background: linear-gradient(135deg, rgb(6,182,212), rgb(8,145,178)); color: rgb(0,16,24); font-weight:700; font-size:14px;"><i data-lucide="zap" style="width:15px;height:15px;"></i>Click for Service</a>
       </div>
       <div data-template-id="svc-8" class="svc-card canva-card relative scanline p-5 rounded-2xl bg-slate-900/60" style="background: rgb(15, 23, 42);">
        <i data-lucide="headphones" class="text-cyan-400 mb-3"></i>
        <h4 data-template-id="svc-8-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 18px;">IT Support &amp; Help Desk Services</h4>
        <p data-template-id="svc-8-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Responsive technical support and remote help desk.</p>
-       <a href="#" data-tab-link="contact" data-template-id="svc-8-hire" class="hire-btn shake-btn mt-4 inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg font-semibold" style="background: linear-gradient(135deg, rgb(6,182,212), rgb(8,145,178)); color: rgb(0,16,24); font-weight:700; font-size:14px;"><i data-lucide="zap" style="width:15px;height:15px;"></i>Click for Service</a>
+       <a href="#" data-template-id="svc-8-hire" class="hire-btn shake-btn open-service-modal mt-4 inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg font-semibold" data-service="IT Support & Help Desk Services" style="background: linear-gradient(135deg, rgb(6,182,212), rgb(8,145,178)); color: rgb(0,16,24); font-weight:700; font-size:14px;"><i data-lucide="zap" style="width:15px;height:15px;"></i>Click for Service</a>
       </div>
       <div data-template-id="svc-9" class="svc-card canva-card relative scanline p-5 rounded-2xl bg-slate-900/60" style="background: rgb(15, 23, 42);">
        <i data-lucide="user-cog" class="text-cyan-400 mb-3"></i>
        <h4 data-template-id="svc-9-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 18px;">Virtual Assistance</h4>
        <p data-template-id="svc-9-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Remote administrative and digital task support.</p>
-       <a href="#" data-tab-link="contact" data-template-id="svc-9-hire" class="hire-btn shake-btn mt-4 inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg font-semibold" style="background: linear-gradient(135deg, rgb(6,182,212), rgb(8,145,178)); color: rgb(0,16,24); font-weight:700; font-size:14px;"><i data-lucide="zap" style="width:15px;height:15px;"></i>Click for Service</a>
+       <a href="#" data-template-id="svc-9-hire" class="hire-btn shake-btn open-service-modal mt-4 inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg font-semibold" data-service="Virtual Assistance" style="background: linear-gradient(135deg, rgb(6,182,212), rgb(8,145,178)); color: rgb(0,16,24); font-weight:700; font-size:14px;"><i data-lucide="zap" style="width:15px;height:15px;"></i>Click for Service</a>
       </div>
      </div><!-- Cyber & Business Services -->
      <h3 data-template-id="svc-cat-2" class="canva-text font-bold mono text-cyan-400 mt-10 mb-4" style="color: rgb(34, 211, 238); font-weight: 400; font-style: normal; font-size: 18px;">// Cyber &amp; Business Services</h3>
@@ -499,55 +582,55 @@
        <i data-lucide="landmark" class="text-cyan-400 mb-3"></i>
        <h4 data-template-id="svc-10-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 18px;">KRA Services</h4>
        <p data-template-id="svc-10-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">PIN registration, KRA account help and support.</p>
-       <a href="#" data-tab-link="contact" data-template-id="svc-10-hire" class="hire-btn shake-btn mt-4 inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg font-semibold" style="background: linear-gradient(135deg, rgb(6,182,212), rgb(8,145,178)); color: rgb(0,16,24); font-weight:700; font-size:14px;"><i data-lucide="zap" style="width:15px;height:15px;"></i>Click for Service</a>
+       <a href="#" data-template-id="svc-10-hire" class="hire-btn shake-btn open-service-modal mt-4 inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg font-semibold" data-service="KRA Services" style="background: linear-gradient(135deg, rgb(6,182,212), rgb(8,145,178)); color: rgb(0,16,24); font-weight:700; font-size:14px;"><i data-lucide="zap" style="width:15px;height:15px;"></i>Click for Service</a>
       </div>
       <div data-template-id="svc-11" class="svc-card canva-card relative scanline p-5 rounded-2xl bg-slate-900/60" style="background: rgb(15, 23, 42);">
        <i data-lucide="heart-pulse" class="text-cyan-400 mb-3"></i>
        <h4 data-template-id="svc-11-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 18px;">SHA Registration</h4>
        <p data-template-id="svc-11-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Fast and accurate SHA registration assistance.</p>
-       <a href="#" data-tab-link="contact" data-template-id="svc-11-hire" class="hire-btn shake-btn mt-4 inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg font-semibold" style="background: linear-gradient(135deg, rgb(6,182,212), rgb(8,145,178)); color: rgb(0,16,24); font-weight:700; font-size:14px;"><i data-lucide="zap" style="width:15px;height:15px;"></i>Click for Service</a>
+       <a href="#" data-template-id="svc-11-hire" class="hire-btn shake-btn open-service-modal mt-4 inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg font-semibold" data-service="SHA Registration" style="background: linear-gradient(135deg, rgb(6,182,212), rgb(8,145,178)); color: rgb(0,16,24); font-weight:700; font-size:14px;"><i data-lucide="zap" style="width:15px;height:15px;"></i>Click for Service</a>
       </div>
       <div data-template-id="svc-12" class="svc-card canva-card relative scanline p-5 rounded-2xl bg-slate-900/60" style="background: rgb(15, 23, 42);">
        <i data-lucide="book-open" class="text-cyan-400 mb-3"></i>
        <h4 data-template-id="svc-12-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 18px;">HELB &amp; Scholarship Assistance</h4>
        <p data-template-id="svc-12-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">HELB applications and scholarship application help.</p>
-       <a href="#" data-tab-link="contact" data-template-id="svc-12-hire" class="hire-btn shake-btn mt-4 inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg font-semibold" style="background: linear-gradient(135deg, rgb(6,182,212), rgb(8,145,178)); color: rgb(0,16,24); font-weight:700; font-size:14px;"><i data-lucide="zap" style="width:15px;height:15px;"></i>Click for Service</a>
+       <a href="#" data-template-id="svc-12-hire" class="hire-btn shake-btn open-service-modal mt-4 inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg font-semibold" data-service="HELB & Scholarship Assistance" style="background: linear-gradient(135deg, rgb(6,182,212), rgb(8,145,178)); color: rgb(0,16,24); font-weight:700; font-size:14px;"><i data-lucide="zap" style="width:15px;height:15px;"></i>Click for Service</a>
       </div>
       <div data-template-id="svc-13" class="svc-card canva-card relative scanline p-5 rounded-2xl bg-slate-900/60" style="background: rgb(15, 23, 42);">
        <i data-lucide="file-check" class="text-cyan-400 mb-3"></i>
        <h4 data-template-id="svc-13-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 18px;">Filing of Returns</h4>
        <p data-template-id="svc-13-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Accurate KRA tax returns filed on time.</p>
-       <a href="#" data-tab-link="contact" data-template-id="svc-13-hire" class="hire-btn shake-btn mt-4 inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg font-semibold" style="background: linear-gradient(135deg, rgb(6,182,212), rgb(8,145,178)); color: rgb(0,16,24); font-weight:700; font-size:14px;"><i data-lucide="zap" style="width:15px;height:15px;"></i>Click for Service</a>
+       <a href="#" data-template-id="svc-13-hire" class="hire-btn shake-btn open-service-modal mt-4 inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg font-semibold" data-service="Filing of Returns" style="background: linear-gradient(135deg, rgb(6,182,212), rgb(8,145,178)); color: rgb(0,16,24); font-weight:700; font-size:14px;"><i data-lucide="zap" style="width:15px;height:15px;"></i>Click for Service</a>
       </div>
       <div data-template-id="svc-14" class="svc-card canva-card relative scanline p-5 rounded-2xl bg-slate-900/60" style="background: rgb(15, 23, 42);">
        <i data-lucide="briefcase" class="text-cyan-400 mb-3"></i>
        <h4 data-template-id="svc-14-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 18px;">Trade &amp; Business Plan Writing</h4>
        <p data-template-id="svc-14-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Professional business and trade plan documents.</p>
-       <a href="#" data-tab-link="contact" data-template-id="svc-14-hire" class="hire-btn shake-btn mt-4 inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg font-semibold" style="background: linear-gradient(135deg, rgb(6,182,212), rgb(8,145,178)); color: rgb(0,16,24); font-weight:700; font-size:14px;"><i data-lucide="zap" style="width:15px;height:15px;"></i>Click for Service</a>
+       <a href="#" data-template-id="svc-14-hire" class="hire-btn shake-btn open-service-modal mt-4 inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg font-semibold" data-service="Trade & Business Plan Writing" style="background: linear-gradient(135deg, rgb(6,182,212), rgb(8,145,178)); color: rgb(0,16,24); font-weight:700; font-size:14px;"><i data-lucide="zap" style="width:15px;height:15px;"></i>Click for Service</a>
       </div>
       <div data-template-id="svc-15" class="svc-card canva-card relative scanline p-5 rounded-2xl bg-slate-900/60" style="background: rgb(15, 23, 42);">
        <i data-lucide="school" class="text-cyan-400 mb-3"></i>
        <h4 data-template-id="svc-15-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 18px;">KUCCPS Application</h4>
        <p data-template-id="svc-15-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Guided KUCCPS course placement applications.</p>
-       <a href="#" data-tab-link="contact" data-template-id="svc-15-hire" class="hire-btn shake-btn mt-4 inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg font-semibold" style="background: linear-gradient(135deg, rgb(6,182,212), rgb(8,145,178)); color: rgb(0,16,24); font-weight:700; font-size:14px;"><i data-lucide="zap" style="width:15px;height:15px;"></i>Click for Service</a>
+       <a href="#" data-template-id="svc-15-hire" class="hire-btn shake-btn open-service-modal mt-4 inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg font-semibold" data-service="KUCCPS Application" style="background: linear-gradient(135deg, rgb(6,182,212), rgb(8,145,178)); color: rgb(0,16,24); font-weight:700; font-size:14px;"><i data-lucide="zap" style="width:15px;height:15px;"></i>Click for Service</a>
       </div>
       <div data-template-id="svc-16" class="svc-card canva-card relative scanline p-5 rounded-2xl bg-slate-900/60" style="background: rgb(15, 23, 42);">
        <i data-lucide="badge-check" class="text-cyan-400 mb-3"></i>
        <h4 data-template-id="svc-16-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 18px;">Good Conduct Download</h4>
        <p data-template-id="svc-16-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Certificate of Good Conduct application and download.</p>
-       <a href="#" data-tab-link="contact" data-template-id="svc-16-hire" class="hire-btn shake-btn mt-4 inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg font-semibold" style="background: linear-gradient(135deg, rgb(6,182,212), rgb(8,145,178)); color: rgb(0,16,24); font-weight:700; font-size:14px;"><i data-lucide="zap" style="width:15px;height:15px;"></i>Click for Service</a>
+       <a href="#" data-template-id="svc-16-hire" class="hire-btn shake-btn open-service-modal mt-4 inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg font-semibold" data-service="Good Conduct Download" style="background: linear-gradient(135deg, rgb(6,182,212), rgb(8,145,178)); color: rgb(0,16,24); font-weight:700; font-size:14px;"><i data-lucide="zap" style="width:15px;height:15px;"></i>Click for Service</a>
       </div>
       <div data-template-id="svc-17" class="svc-card canva-card relative scanline p-5 rounded-2xl bg-slate-900/60" style="background: rgb(15, 23, 42);">
        <i data-lucide="file-text" class="text-cyan-400 mb-3"></i>
        <h4 data-template-id="svc-17-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 18px;">CV Writing</h4>
        <p data-template-id="svc-17-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">ATS-friendly CVs, cover letters and LinkedIn profiles.</p>
-       <a href="#" data-tab-link="contact" data-template-id="svc-17-hire" class="hire-btn shake-btn mt-4 inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg font-semibold" style="background: linear-gradient(135deg, rgb(6,182,212), rgb(8,145,178)); color: rgb(0,16,24); font-weight:700; font-size:14px;"><i data-lucide="zap" style="width:15px;height:15px;"></i>Click for Service</a>
+       <a href="#" data-template-id="svc-17-hire" class="hire-btn shake-btn open-service-modal mt-4 inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg font-semibold" data-service="CV Writing" style="background: linear-gradient(135deg, rgb(6,182,212), rgb(8,145,178)); color: rgb(0,16,24); font-weight:700; font-size:14px;"><i data-lucide="zap" style="width:15px;height:15px;"></i>Click for Service</a>
       </div>
       <div data-template-id="svc-18" class="svc-card canva-card relative scanline p-5 rounded-2xl bg-slate-900/60" style="background: rgb(15, 23, 42);">
        <i data-lucide="user-round" class="text-cyan-400 mb-3"></i>
        <h4 data-template-id="svc-18-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 18px;">Cyber &amp; Business Services</h4>
        <p data-template-id="svc-18-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Full-service cyber cafe and business support desk.</p>
-       <a href="#" data-tab-link="contact" data-template-id="svc-18-hire" class="hire-btn shake-btn mt-4 inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg font-semibold" style="background: linear-gradient(135deg, rgb(6,182,212), rgb(8,145,178)); color: rgb(0,16,24); font-weight:700; font-size:14px;"><i data-lucide="zap" style="width:15px;height:15px;"></i>Click for Service</a>
+       <a href="#" data-template-id="svc-18-hire" class="hire-btn shake-btn open-service-modal mt-4 inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg font-semibold" data-service="Cyber & Business Services" style="background: linear-gradient(135deg, rgb(6,182,212), rgb(8,145,178)); color: rgb(0,16,24); font-weight:700; font-size:14px;"><i data-lucide="zap" style="width:15px;height:15px;"></i>Click for Service</a>
       </div>
      </div><!-- Design Services -->
      <h3 data-template-id="svc-cat-3" class="canva-text font-bold mono text-cyan-400 mt-10 mb-4" style="color: rgb(34, 211, 238); font-weight: 400; font-style: normal; font-size: 18px;">// Design Services</h3>
@@ -556,37 +639,37 @@
        <i data-lucide="image" class="text-cyan-400 mb-3"></i>
        <h4 data-template-id="svc-19-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 18px;">Posters &amp; Flyers Design</h4>
        <p data-template-id="svc-19-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Eye-catching promotional posters and flyers.</p>
-       <a href="#" data-tab-link="contact" data-template-id="svc-19-hire" class="hire-btn shake-btn mt-4 inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg font-semibold" style="background: linear-gradient(135deg, rgb(6,182,212), rgb(8,145,178)); color: rgb(0,16,24); font-weight:700; font-size:14px;"><i data-lucide="zap" style="width:15px;height:15px;"></i>Click for Service</a>
+       <a href="#" data-template-id="svc-19-hire" class="hire-btn shake-btn open-service-modal mt-4 inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg font-semibold" data-service="Posters & Flyers Design" style="background: linear-gradient(135deg, rgb(6,182,212), rgb(8,145,178)); color: rgb(0,16,24); font-weight:700; font-size:14px;"><i data-lucide="zap" style="width:15px;height:15px;"></i>Click for Service</a>
       </div>
       <div data-template-id="svc-20" class="svc-card canva-card relative scanline p-5 rounded-2xl bg-slate-900/60" style="background: rgb(15, 23, 42);">
        <i data-lucide="award" class="text-cyan-400 mb-3"></i>
        <h4 data-template-id="svc-20-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 18px;">Certificate Design</h4>
        <p data-template-id="svc-20-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Elegant, custom certificate designs for any occasion.</p>
-       <a href="#" data-tab-link="contact" data-template-id="svc-20-hire" class="hire-btn shake-btn mt-4 inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg font-semibold" style="background: linear-gradient(135deg, rgb(6,182,212), rgb(8,145,178)); color: rgb(0,16,24); font-weight:700; font-size:14px;"><i data-lucide="zap" style="width:15px;height:15px;"></i>Click for Service</a>
+       <a href="#" data-template-id="svc-20-hire" class="hire-btn shake-btn open-service-modal mt-4 inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg font-semibold" data-service="Certificate Design" style="background: linear-gradient(135deg, rgb(6,182,212), rgb(8,145,178)); color: rgb(0,16,24); font-weight:700; font-size:14px;"><i data-lucide="zap" style="width:15px;height:15px;"></i>Click for Service</a>
       </div>
       <div data-template-id="svc-21" class="svc-card canva-card relative scanline p-5 rounded-2xl bg-slate-900/60" style="background: rgb(15, 23, 42);">
        <i data-lucide="heart" class="text-cyan-400 mb-3"></i>
        <h4 data-template-id="svc-21-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 18px;">Wedding Cards Design</h4>
        <p data-template-id="svc-21-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Beautiful, personalized wedding invitation cards.</p>
-       <a href="#" data-tab-link="contact" data-template-id="svc-21-hire" class="hire-btn shake-btn mt-4 inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg font-semibold" style="background: linear-gradient(135deg, rgb(6,182,212), rgb(8,145,178)); color: rgb(0,16,24); font-weight:700; font-size:14px;"><i data-lucide="zap" style="width:15px;height:15px;"></i>Click for Service</a>
+       <a href="#" data-template-id="svc-21-hire" class="hire-btn shake-btn open-service-modal mt-4 inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg font-semibold" data-service="Wedding Cards Design" style="background: linear-gradient(135deg, rgb(6,182,212), rgb(8,145,178)); color: rgb(0,16,24); font-weight:700; font-size:14px;"><i data-lucide="zap" style="width:15px;height:15px;"></i>Click for Service</a>
       </div>
       <div data-template-id="svc-22" class="svc-card canva-card relative scanline p-5 rounded-2xl bg-slate-900/60" style="background: rgb(15, 23, 42);">
        <i data-lucide="gift" class="text-cyan-400 mb-3"></i>
        <h4 data-template-id="svc-22-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 18px;">Harambee Cards Design</h4>
        <p data-template-id="svc-22-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Stylish harambee and fundraising invitation cards.</p>
-       <a href="#" data-tab-link="contact" data-template-id="svc-22-hire" class="hire-btn shake-btn mt-4 inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg font-semibold" style="background: linear-gradient(135deg, rgb(6,182,212), rgb(8,145,178)); color: rgb(0,16,24); font-weight:700; font-size:14px;"><i data-lucide="zap" style="width:15px;height:15px;"></i>Click for Service</a>
+       <a href="#" data-template-id="svc-22-hire" class="hire-btn shake-btn open-service-modal mt-4 inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg font-semibold" data-service="Harambee Cards Design" style="background: linear-gradient(135deg, rgb(6,182,212), rgb(8,145,178)); color: rgb(0,16,24); font-weight:700; font-size:14px;"><i data-lucide="zap" style="width:15px;height:15px;"></i>Click for Service</a>
       </div>
       <div data-template-id="svc-23" class="svc-card canva-card relative scanline p-5 rounded-2xl bg-slate-900/60" style="background: rgb(15, 23, 42);">
        <i data-lucide="sparkles" class="text-cyan-400 mb-3"></i>
        <h4 data-template-id="svc-23-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 18px;">Pre-wedding Cards Design</h4>
        <p data-template-id="svc-23-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Creative pre-wedding announcement cards.</p>
-       <a href="#" data-tab-link="contact" data-template-id="svc-23-hire" class="hire-btn shake-btn mt-4 inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg font-semibold" style="background: linear-gradient(135deg, rgb(6,182,212), rgb(8,145,178)); color: rgb(0,16,24); font-weight:700; font-size:14px;"><i data-lucide="zap" style="width:15px;height:15px;"></i>Click for Service</a>
+       <a href="#" data-template-id="svc-23-hire" class="hire-btn shake-btn open-service-modal mt-4 inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg font-semibold" data-service="Pre-wedding Cards Design" style="background: linear-gradient(135deg, rgb(6,182,212), rgb(8,145,178)); color: rgb(0,16,24); font-weight:700; font-size:14px;"><i data-lucide="zap" style="width:15px;height:15px;"></i>Click for Service</a>
       </div>
       <div data-template-id="svc-24" class="svc-card canva-card relative scanline p-5 rounded-2xl bg-slate-900/60" style="background: rgb(15, 23, 42);">
        <i data-lucide="palette" class="text-cyan-400 mb-3"></i>
        <h4 data-template-id="svc-24-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 18px;">Posters &amp; Flyers Design</h4>
        <p data-template-id="svc-24-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Branding, logos and complete visual identity kits.</p>
-       <a href="#" data-tab-link="contact" data-template-id="svc-24-hire" class="hire-btn shake-btn mt-4 inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg font-semibold" style="background: linear-gradient(135deg, rgb(6,182,212), rgb(8,145,178)); color: rgb(0,16,24); font-weight:700; font-size:14px;"><i data-lucide="zap" style="width:15px;height:15px;"></i>Click for Service</a>
+       <a href="#" data-template-id="svc-24-hire" class="hire-btn shake-btn open-service-modal mt-4 inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg font-semibold" data-service="Posters & Flyers Design" style="background: linear-gradient(135deg, rgb(6,182,212), rgb(8,145,178)); color: rgb(0,16,24); font-weight:700; font-size:14px;"><i data-lucide="zap" style="width:15px;height:15px;"></i>Click for Service</a>
       </div>
      </div>
     </section><!-- PORTFOLIO -->
@@ -697,7 +780,33 @@
     <div class="max-w-7xl mx-auto px-5 py-6 text-center">
      <p data-template-id="footer-copy" class="canva-text text-slate-400 text-sm" style="color: rgb(148, 163, 184); font-weight: 400; font-style: normal; font-size: 16px;">© 2026 Brianseverall Solutions. All Rights Reserved.</p>
     </div>
-   </footer><a data-template-id="call-help-float" href="tel:+254754415514" title="Click for Help — Call +254 754 415 514" class="canva-button fixed bottom-24 right-6 z-40 w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-lg" style="background: rgb(6, 182, 212); color: rgb(0, 16, 24);"><i data-lucide="phone-call"></i></a> <a data-template-id="whatsapp-float" href="https://wa.me/254115769984" target="_blank" rel="noopener noreferrer" class="canva-button fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-lg" style="background: rgb(34, 197, 94); color: rgb(255, 255, 255);"><i data-lucide="message-circle"></i></a>
+   </footer>
+
+  <!-- QUICK SERVICE REQUEST MODAL -->
+  <div id="service-modal-overlay">
+   <div id="service-modal" role="dialog" aria-modal="true" aria-labelledby="service-modal-title">
+    <h3 id="service-modal-title">Request a Service</h3>
+    <p class="modal-sub" id="service-modal-sub">Fill in your details and we'll get back to you shortly.</p>
+    <form id="service-modal-form">
+     <input type="hidden" name="_subject" value="New service request from Brianseverall Solutions website">
+     <input type="hidden" name="_captcha" value="false">
+     <input type="hidden" name="_template" value="table">
+     <input type="hidden" name="service" id="svc-modal-service-field" value="">
+     <label for="svc-modal-name">Full Name</label>
+     <input type="text" id="svc-modal-name" name="name" required>
+     <label for="svc-modal-email">Email Address</label>
+     <input type="email" id="svc-modal-email" name="email" required>
+     <label for="svc-modal-message">Your Message</label>
+     <textarea id="svc-modal-message" name="message" rows="3"></textarea>
+     <div class="modal-btn-row">
+      <button type="button" id="svc-modal-cancel" class="modal-cancel-btn">Cancel</button>
+      <button type="submit" id="svc-modal-submit" class="modal-submit-btn">Submit</button>
+     </div>
+     <p id="service-modal-status"></p>
+    </form>
+   </div>
+  </div>
+<a data-template-id="call-help-float" href="tel:+254754415514" title="Click for Help — Call +254 754 415 514" class="canva-button fixed bottom-24 right-6 z-40 w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-lg" style="background: rgb(6, 182, 212); color: rgb(0, 16, 24);"><i data-lucide="phone-call"></i></a> <a data-template-id="whatsapp-float" href="https://wa.me/254115769984" target="_blank" rel="noopener noreferrer" class="canva-button fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-lg" style="background: rgb(34, 197, 94); color: rgb(255, 255, 255);"><i data-lucide="message-circle"></i></a>
   </div>
   <script src="/_sdk/719055fef2a85d14.editing_sdk.js" integrity="sha512-kFqrdGgIiTOsu307feB5Cy3JVP9IayftsmCIZ0csxYBGuBmJQPhyvcnmKR8F0fTW97h5s1gAvz3SumI8zJ6OxQ=="></script>
   <script>
@@ -778,6 +887,75 @@
     submitBtn.textContent = 'Sending…';
     // form submission continues normally (not prevented) and the browser navigates to FormSubmit's confirmation page
   });
+
+  // ---------- QUICK SERVICE REQUEST MODAL ----------
+  (function(){
+    const overlay = document.getElementById('service-modal-overlay');
+    const form = document.getElementById('service-modal-form');
+    const titleEl = document.getElementById('service-modal-title');
+    const subEl = document.getElementById('service-modal-sub');
+    const serviceField = document.getElementById('svc-modal-service-field');
+    const cancelBtn = document.getElementById('svc-modal-cancel');
+    const submitBtn = document.getElementById('svc-modal-submit');
+    const statusEl = document.getElementById('service-modal-status');
+
+    function openModal(serviceName){
+      form.reset();
+      statusEl.style.display = 'none';
+      statusEl.classList.remove('error');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit';
+      serviceField.value = serviceName || '';
+      titleEl.textContent = serviceName ? ('Request: ' + serviceName) : 'Request a Service';
+      subEl.textContent = "Fill in your details and we'll get back to you shortly.";
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => document.getElementById('svc-modal-name').focus(), 50);
+    }
+
+    function closeModal(){
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.open-service-modal').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.preventDefault();
+        openModal(btn.dataset.service);
+      });
+    });
+
+    cancelBtn.addEventListener('click', closeModal);
+    overlay.addEventListener('click', e => { if(e.target === overlay) closeModal(); });
+    document.addEventListener('keydown', e => { if(e.key === 'Escape' && overlay.classList.contains('open')) closeModal(); });
+
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending…';
+      statusEl.style.display = 'none';
+      statusEl.classList.remove('error');
+
+      try {
+        const res = await fetch('https://formsubmit.co/ajax/brianseverallsolutions@gmail.com', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(form)
+        });
+        if(!res.ok) throw new Error('Request failed');
+        statusEl.textContent = 'Message sent! We\'ll be in touch soon.';
+        statusEl.style.display = 'block';
+        submitBtn.textContent = 'Sent ✓';
+        setTimeout(closeModal, 1600);
+      } catch(err){
+        statusEl.textContent = "Couldn't send — please try again or use the Contact tab.";
+        statusEl.classList.add('error');
+        statusEl.style.display = 'block';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit';
+      }
+    });
+  })();
 </script>
  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a196c268341e8a64',t:'MTc4Mzc2MTkxMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 </body></html>
