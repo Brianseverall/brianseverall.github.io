@@ -1,5 +1,3 @@
-
-
 <!doctype html>
 <html lang="en"><head><script>window["__codeletBootstrap__"]=JSON.parse('{"A":"A","B":"20260710-05-9ed98a3"}');</script><script src="/_sdk/f432b76fb310b513.telemetry_sdk.js" integrity="sha512-9FJQ55EKmmqhyyik8BhrMVfm0+iYYfb8uOlRsjtkxJMEI97qOVEI4PnHohDjQAtvAep0IOEpdQ64eki0sz62ug=="></script>
   <meta charset="UTF-8">
@@ -15,8 +13,17 @@
   <style>
   body { font-family: 'Work Sans', sans-serif; }
   .mono { font-family: 'Space Mono', monospace; }
-  .tab-btn.active { color:#22d3ee; border-bottom-color:#22d3ee; }
-  .tab-btn { border-bottom:2px solid transparent; transition:.2s; }
+  .tab-btn { border-bottom:3px solid transparent; transition:.2s; position:relative; border-radius:8px 8px 0 0; padding-left:10px; padding-right:10px; }
+  .tab-btn.active{
+    color:#001018 !important;
+    background:#f97316;
+    box-shadow:0 0 0 3px rgba(249,115,22,.5), 0 4px 16px rgba(249,115,22,.5);
+    border-bottom-color:transparent;
+  }
+  body.light-theme .tab-btn.active{ color:#001018 !important; background:#f97316; box-shadow:0 0 0 3px rgba(249,115,22,.45), 0 4px 16px rgba(249,115,22,.35); }
+  /* mobile menu active item */
+  #mobile-menu .tab-btn{ border-bottom:none; border-radius:10px; padding:8px 12px; }
+  #mobile-menu .tab-btn.active{ box-shadow:0 0 0 3px rgba(249,115,22,.45), 0 4px 14px rgba(249,115,22,.4); }
   .panel { animation: fadeIn .5s ease; }
   @keyframes fadeIn { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:none} }
   @keyframes pulseGlow {
@@ -103,12 +110,22 @@
 
   .cv-btn{
     display:inline-flex; align-items:center; gap:10px;
-    padding:10px 20px; background:linear-gradient(135deg,#0a66c2,#084b8a);
+    padding:10px 20px; background:
+      linear-gradient(135deg,#0a66c2,#084b8a) padding-box,
+      linear-gradient(115deg, #22d3ee, #3b82f6, #a855f7, #d946ef, #f472b6, #f87171, #fbbf24, #facc15, #34d399, #22d3ee) border-box;
+    background-size:100% 100%, 400% 400%;
+    border:4px solid transparent;
     color:#fff; font-size:15px; font-weight:600; text-decoration:none;
-    border-radius:50px; box-shadow:0 8px 20px rgba(0,0,0,.25);
+    border-radius:50px; box-shadow:0 8px 20px rgba(0,0,0,.25), 0 0 20px rgba(34,211,238,.35);
     transition:transform .25s ease, box-shadow .25s ease; margin-top:14px;
+    animation: cvBorderShift 5s linear infinite;
   }
-  .cv-btn:hover{ transform:translateY(-3px); box-shadow:0 12px 26px rgba(0,0,0,.3); }
+  @keyframes cvBorderShift{
+    0%{ background-position:0 0, 0% 50%; }
+    50%{ background-position:0 0, 100% 50%; }
+    100%{ background-position:0 0, 0% 50%; }
+  }
+  .cv-btn:hover{ transform:translateY(-3px); box-shadow:0 12px 26px rgba(0,0,0,.3), 0 0 28px rgba(34,211,238,.5); }
   @keyframes shake{
     0%{transform:translateX(0);} 15%{transform:translateX(-2px);}
     30%{transform:translateX(2px);} 45%{transform:translateX(-2px);}
@@ -436,14 +453,14 @@
      </nav>
     </div>
     <ul id="mobile-menu" class="lg:hidden hidden flex-col gap-1 px-5 pb-4 border-t border-cyan-500/20 bg-slate-950/95">
-     <li><button data-tab="home" data-template-id="mtab-home" class="canva-link w-full text-left py-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Home</button></li>
-     <li><button data-tab="about" data-template-id="mtab-about" class="canva-link w-full text-left py-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">About</button></li>
-     <li><button data-tab="courses" data-template-id="mtab-courses" class="canva-link w-full text-left py-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Courses</button></li>
-     <li><button data-tab="services" data-template-id="mtab-services" class="canva-link w-full text-left py-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Services</button></li>
-     <li><button data-tab="portfolio" data-template-id="mtab-portfolio" class="canva-link w-full text-left py-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Portfolio</button></li>
-     <li><button data-tab="team" data-template-id="mtab-team" class="canva-link w-full text-left py-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Team</button></li>
-     <li><button data-tab="gallery" data-template-id="mtab-gallery" class="canva-link w-full text-left py-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Gallery</button></li>
-     <li><button data-tab="contact" data-template-id="mtab-contact" class="canva-link w-full text-left py-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Contact</button></li>
+     <li><button data-tab="home" data-template-id="mtab-home" class="tab-btn canva-link w-full text-left py-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Home</button></li>
+     <li><button data-tab="about" data-template-id="mtab-about" class="tab-btn canva-link w-full text-left py-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">About</button></li>
+     <li><button data-tab="courses" data-template-id="mtab-courses" class="tab-btn canva-link w-full text-left py-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Courses</button></li>
+     <li><button data-tab="services" data-template-id="mtab-services" class="tab-btn canva-link w-full text-left py-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Services</button></li>
+     <li><button data-tab="portfolio" data-template-id="mtab-portfolio" class="tab-btn canva-link w-full text-left py-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Portfolio</button></li>
+     <li><button data-tab="team" data-template-id="mtab-team" class="tab-btn canva-link w-full text-left py-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Team</button></li>
+     <li><button data-tab="gallery" data-template-id="mtab-gallery" class="tab-btn canva-link w-full text-left py-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Gallery</button></li>
+     <li><button data-tab="contact" data-template-id="mtab-contact" class="tab-btn canva-link w-full text-left py-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Contact</button></li>
      <li><a href="admin.html" target="_blank" rel="noopener noreferrer" data-template-id="mtab-admin" class="canva-link w-full text-left py-2 flex items-center gap-2" style="color: rgb(203, 213, 225);" aria-label="Admin" title="Admin"><i data-lucide="settings" style="width:16px;height:16px;"></i></a></li>
     </ul>
    </header>
@@ -901,7 +918,50 @@
     });
   })();
 
-  // Robot verification enables the send button
+  // ---------- BLOCK VIEW-SOURCE / DEVTOOLS SHORTCUTS & RIGHT-CLICK ----------
+  (function(){
+    function showBlockedNotice(){
+      let box = document.getElementById('src-block-toast');
+      if(!box){
+        box = document.createElement('div');
+        box.id = 'src-block-toast';
+        box.style.cssText = 'position:fixed;left:50%;bottom:30px;transform:translateX(-50%) translateY(20px);z-index:9999;background:#fde047;color:#111827;border:2px solid #facc15;border-radius:14px;padding:14px 20px;font-family:"Work Sans",sans-serif;font-size:14px;font-weight:700;box-shadow:0 12px 30px rgba(2,6,23,.6), 0 0 24px rgba(250,204,21,.5);opacity:0;transition:opacity .25s ease, transform .25s ease;text-align:center;max-width:90vw;';
+        box.innerHTML = '😂 Nice trial, but contact admin Brianseverall for help!';
+        document.body.appendChild(box);
+      }
+      box.style.opacity = '1';
+      box.style.transform = 'translateX(-50%) translateY(0)';
+      clearTimeout(box._hideTimer);
+      box._hideTimer = setTimeout(() => {
+        box.style.opacity = '0';
+        box.style.transform = 'translateX(-50%) translateY(20px)';
+      }, 2600);
+    }
+
+    document.addEventListener('contextmenu', function(e){
+      e.preventDefault();
+      showBlockedNotice();
+    });
+
+    document.addEventListener('keydown', function(e){
+      const key = e.key ? e.key.toUpperCase() : '';
+      const blockedCombo =
+        key === 'F12' ||
+        (e.ctrlKey && !e.shiftKey && !e.altKey && key === 'U') ||          // Ctrl+U view-source
+        (e.ctrlKey && !e.shiftKey && !e.altKey && key === 'S') ||          // Ctrl+S save page
+        (e.ctrlKey && e.shiftKey && key === 'I') ||                       // Ctrl+Shift+I devtools
+        (e.ctrlKey && e.shiftKey && key === 'J') ||                       // Ctrl+Shift+J console
+        (e.ctrlKey && e.shiftKey && key === 'C') ||                       // Ctrl+Shift+C inspect
+        (e.ctrlKey && e.shiftKey && key === 'K') ||                       // Firefox console
+        (e.metaKey && e.altKey && key === 'I');                           // Mac Cmd+Opt+I
+
+      if(blockedCombo){
+        e.preventDefault();
+        e.stopPropagation();
+        showBlockedNotice();
+      }
+    });
+  })();
   const robot = document.getElementById('c-robot');
   const submitBtn = document.getElementById('c-submit');
   robot.addEventListener('change', () => {
