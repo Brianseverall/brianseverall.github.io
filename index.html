@@ -383,6 +383,28 @@
     margin-top:12px; text-align:center; font-size:13px; color:#34d399; display:none;
   }
   #service-modal-status.error{ color:#f87171; }
+
+  /* ---------- DIRECT CONTACT BUTTONS (Call / WhatsApp / Email) ---------- */
+  .direct-contact-btn{
+    color:#fff; font-size:13px; text-decoration:none;
+    box-shadow:0 6px 16px rgba(0,0,0,.25);
+    transition:transform .2s ease, box-shadow .2s ease, filter .2s ease;
+    position:relative; overflow:hidden;
+  }
+  .direct-contact-btn:hover{ transform:translateY(-3px); filter:brightness(1.08); }
+  .direct-contact-btn span{ font-size:12.5px; }
+  .call-btn{ background:linear-gradient(145deg, #22c55e, #15803d); }
+  .whatsapp-btn{ background:linear-gradient(145deg, #25D366, #128C4A); }
+  .email-btn{ background:linear-gradient(145deg, #38bdf8, #0369a1); }
+  .direct-contact-btn::before{
+    content:'';
+    position:absolute; inset:0;
+    background:rgba(255,255,255,.18);
+    transform:translateY(100%);
+    transition:transform .25s ease;
+  }
+  .direct-contact-btn:hover::before{ transform:translateY(0); }
+  .direct-contact-btn i, .direct-contact-btn span{ position:relative; z-index:1; }
   </style>
   <script src="/_sdk/9432170dbd2ae0df.resizing_sdk.js" type="text/javascript" integrity="sha512-FeT+58sb1f9ejWPWFjCbJvTT+SDwGV+ngrHUnlO7TWEOoqwOLj6p256kO3vOL7DIWl1cIgrobiof8v2bOigwPg=="></script>
   <script src="/_sdk/0179d719c431a79e.data_sdk.js" type="text/javascript" integrity="sha512-OsRvJkI5GkC3MJQcgotQYotpzrMSX415GiKKgvYdxQEEkzD/fdchShO2FMSy0PJr/tiINMXOk5Vl2zAgg6bUiA=="></script>
@@ -750,8 +772,21 @@
        <p data-template-id="contact-whatsapp" class="canva-text text-slate-300 mb-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">💬 +254 115 769 984</p>
        <p data-template-id="contact-email" class="canva-text text-slate-300 mb-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">✉ brianseverallsolutions@gmail.com</p>
        <p data-template-id="contact-location" class="canva-text text-slate-300 mb-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">📍 Nandi Hills, Kenya</p>
-       <a data-template-id="contact-youtube" href="https://www.youtube.com/@brianseverall" target="_blank" rel="noopener noreferrer" class="canva-button inline-flex items-center gap-2 px-4 py-2 rounded-lg font-semibold mt-2" style="background: rgb(220, 38, 38); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 15px;"><i data-lucide="youtube" style="width:16px;height:16px;"></i>Subscribe on YouTube</a>
-       <a data-template-id="contact-call-help" href="tel:+254754415514" class="canva-button inline-flex items-center gap-2 px-4 py-2 rounded-lg font-semibold mt-2 ml-2" style="background: rgb(34, 197, 94); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 15px;"><i data-lucide="phone-call" style="width:16px;height:16px;"></i>Click for Help</a>
+       <div class="grid grid-cols-3 gap-3 mt-4">
+        <a data-template-id="contact-direct-call" href="tel:+254754415514" class="direct-contact-btn call-btn flex flex-col items-center justify-center gap-1 py-3 rounded-xl font-semibold">
+         <i data-lucide="phone-call" style="width:20px;height:20px;"></i>
+         <span>Call</span>
+        </a>
+        <a data-template-id="contact-direct-whatsapp" href="https://wa.me/254115769984" target="_blank" rel="noopener noreferrer" class="direct-contact-btn whatsapp-btn flex flex-col items-center justify-center gap-1 py-3 rounded-xl font-semibold">
+         <i data-lucide="message-circle" style="width:20px;height:20px;"></i>
+         <span>WhatsApp</span>
+        </a>
+        <a data-template-id="contact-direct-email" href="mailto:brianseverallsolutions@gmail.com" class="direct-contact-btn email-btn flex flex-col items-center justify-center gap-1 py-3 rounded-xl font-semibold">
+         <i data-lucide="mail" style="width:20px;height:20px;"></i>
+         <span>Email</span>
+        </a>
+       </div>
+       <a data-template-id="contact-youtube" href="https://www.youtube.com/@brianseverall" target="_blank" rel="noopener noreferrer" class="canva-button inline-flex items-center gap-2 px-4 py-2 rounded-lg font-semibold mt-4" style="background: rgb(220, 38, 38); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 15px;"><i data-lucide="youtube" style="width:16px;height:16px;"></i>Subscribe on YouTube</a>
       </div>
       <form id="contact-form" action="https://formsubmit.co/brianseverallsolutions@gmail.com" method="POST" class="canva-panel p-6 rounded-2xl space-y-3">
        <input type="hidden" name="_subject" value="New enquiry from Brianseverall Solutions website">
