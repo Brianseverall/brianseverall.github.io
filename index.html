@@ -1,350 +1,570 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BRIANSEVERALL SOLUTIONS</title>
-<link rel="icon" type="image/jpeg" href="favicon.jpg">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:"Poppins",sans-serif;}
-html{scroll-behavior:smooth;}
-body{background-color:#c2e9fb;color:#212121;line-height:1.6;}
 
-/* Header */
-header{background:#064bbb;color:white;padding:25px 10px;border-bottom:4px solid #0cf12b;display:flex;align-items:center;justify-content:center;position:relative;text-align:center;}
-header img.logo{position:absolute;left:20px;width:110px;height:110px;border-radius:50%;object-fit:cover;border:3px solid white;box-shadow:0 3px 8px rgba(0,0,0,0.5);}
-header h1{font-size:2rem;}
+<!doctype html>
+<html lang="en"><head><script>window["__codeletBootstrap__"]=JSON.parse('{"A":"A","B":"20260710-05-9ed98a3"}');</script><script src="/_sdk/f432b76fb310b513.telemetry_sdk.js" integrity="sha512-9FJQ55EKmmqhyyik8BhrMVfm0+iYYfb8uOlRsjtkxJMEI97qOVEI4PnHohDjQAtvAep0IOEpdQ64eki0sz62ug=="></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brianseverall Solutions</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800&amp;family=Space+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+  body { font-family: 'Work Sans', sans-serif; }
+  .mono { font-family: 'Space Mono', monospace; }
+  .tab-btn.active { color:#22d3ee; border-bottom-color:#22d3ee; }
+  .tab-btn { border-bottom:2px solid transparent; transition:.2s; }
+  .panel { animation: fadeIn .5s ease; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:none} }
+  @keyframes pulseGlow {
+    0%,100% { box-shadow:0 0 0 1px rgba(34,211,238,.25), 0 0 18px rgba(34,211,238,.15); }
+    50% { box-shadow:0 0 0 1px rgba(34,211,238,.6), 0 0 34px rgba(34,211,238,.45); }
+  }
+  .svc-card { animation:pulseGlow 3s ease-in-out infinite; }
+  .svc-card:nth-child(2n){ animation-delay:.6s }
+  .svc-card:nth-child(3n){ animation-delay:1.2s }
+  .svc-card:hover{ transform:translateY(-4px) }
+  .svc-card{ transition:transform .25s }
+  .scanline::before{
+    content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+    background:linear-gradient(180deg,transparent,rgba(34,211,238,.08),transparent);
+    background-size:100% 200%;animation:scan 4s linear infinite;
+  }
+  @keyframes scan{ from{background-position:0 -100%} to{background-position:0 100%} }
+  .marquee-wrap{
+    overflow:hidden; white-space:nowrap; width:100%;
+    background:rgb(8,15,30); border-top:1px solid rgba(34,211,238,.2); border-bottom:1px solid rgba(34,211,238,.2);
+    padding:10px 0;
+  }
+  .marquee-track{
+    display:inline-block; padding-left:100%;
+    animation:marquee 22s linear infinite;
+  }
+  .marquee-track span{ color:#67e8f9; font-family:'Space Mono',monospace; font-size:14px; letter-spacing:.02em; }
+  @keyframes marquee{ from{ transform:translateX(0); } to{ transform:translateX(-100%); } }
+  body.light-theme .marquee-wrap{ background:#eef6f8; border-color:rgba(8,145,178,.25); }
+  body.light-theme .marquee-track span{ color:#0891b2; }
+  .grid-bg{
+    background-image:linear-gradient(rgba(34,211,238,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(34,211,238,.05) 1px,transparent 1px);
+    background-size:32px 32px;
+  }
 
-/* Navigation */
-nav{display:flex;justify-content:center;flex-wrap:wrap;background:#0cf12b;position:sticky;top:0;z-index:999;}
-nav a{color:white;text-decoration:none;padding:12px 18px;display:inline-block;font-weight:600;}
-nav a:hover{background:#064bbb;}
+  /* ---------- THEME TOGGLE ---------- */
+  #theme-toggle{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:38px;height:38px;border-radius:9999px;
+    border:1px solid rgba(34,211,238,.4);
+    background:rgba(34,211,238,.08);
+    color:#22d3ee;cursor:pointer;transition:.2s;flex-shrink:0;
+  }
+  #theme-toggle:hover{ background:rgba(34,211,238,.18); }
+  #theme-toggle .icon-moon{ display:inline-flex; }
+  #theme-toggle .icon-sun{ display:none; }
+  body.light-theme #theme-toggle .icon-moon{ display:none; }
+  body.light-theme #theme-toggle .icon-sun{ display:inline-flex; }
 
-/* Sections */
-section{padding:40px 20px;text-align:center;}
-h2{color:#064bbb;margin-bottom:15px;}
+  body{ transition: background-color .3s ease, color .3s ease; }
+  body.light-theme{ background: linear-gradient(#f8fafc, #eef2f7) !important; color:#0f172a; }
+  body.light-theme .grid-bg{
+    background-image:linear-gradient(rgba(8,145,178,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(8,145,178,.08) 1px,transparent 1px);
+  }
+  body.light-theme header{ background:rgba(255,255,255,.85) !important; border-bottom-color:rgba(8,145,178,.25) !important; }
+  body.light-theme #mobile-menu{ background:rgba(255,255,255,.97) !important; border-top-color:rgba(8,145,178,.25) !important; }
+  body.light-theme #theme-toggle{ border-color:rgba(8,145,178,.4); background:rgba(8,145,178,.08); color:#0891b2; }
+  body.light-theme #theme-toggle:hover{ background:rgba(8,145,178,.18); }
 
-/* Home */
-#home{background-size:cover;background-position:center;animation:homeSlideshow 20s infinite alternate;color:white;padding:100px 20px;text-shadow:2px 2px 5px #000;position:relative;}
-@keyframes homeSlideshow{
-0%{background-image:url("https://i.postimg.cc/bdXxs0XH/Whats-App-Image-2025-06-13-at-12-26-01.jpg");}
-25%{background-image:url("https://i.postimg.cc/5y9ZpNJD/Whats-App-Image-2025-06-13-at-16-43-44-1.jpg");}
-50%{background-image:url("https://i.postimg.cc/mDyvQ1vQ/Whats-App-Image-2025-06-13-at-16-43-44.jpg");}
-75%{background-image:url("https://uploads.onecompiler.io/43unes7px/43zcagjgh/WhatsApp%20Image%202025-10-11%20at%2023.16.24.jpeg");}
-100%{background-image:url("https://i.postimg.cc/T1fNpXr3/Whats-App-Image-2025-06-13-at-12-11-17.jpg");}
-}
+  /* text colour remaps (override inline Canva colours) */
+  body.light-theme [style*="color: rgb(226, 232, 240)"]{ color:#0f172a !important; }
+  body.light-theme [style*="color: rgb(241, 245, 249)"]{ color:#0f172a !important; }
+  body.light-theme [style*="color: rgb(203, 213, 225)"]{ color:#334155 !important; }
+  body.light-theme [style*="color: rgb(148, 163, 184)"]{ color:#64748b !important; }
+  body.light-theme [style*="color: rgb(103, 232, 249)"]{ color:#0891b2 !important; }
+  body.light-theme [style*="color: rgb(34, 211, 238)"]{ color:#0891b2 !important; }
 
-/* About */
-#about{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:20px;}
-#about img{width:375px;height:250px;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.4);object-fit:cover;}
-#about .about-text{max-width:700px;text-align:left;}
+  /* card / panel backgrounds */
+  body.light-theme .canva-card[style*="background: rgb(15, 23, 42)"],
+  body.light-theme .canva-panel[style*="background: rgb(15, 23, 42)"]{
+    background:#ffffff !important;
+    border:1px solid rgba(8,145,178,.15);
+    box-shadow:0 1px 3px rgba(15,23,42,.08);
+  }
+  body.light-theme .tab-btn.active{ color:#0891b2 !important; border-bottom-color:#0891b2; }
+  body.light-theme input, body.light-theme textarea{
+    background:#ffffff !important; color:#0f172a !important; border-color:rgba(8,145,178,.25) !important;
+  }
+  body.light-theme input::placeholder, body.light-theme textarea::placeholder{ color:#94a3b8; }
+  body.light-theme .svc-card{ box-shadow:0 0 0 1px rgba(8,145,178,.12), 0 2px 10px rgba(8,145,178,.08) !important; animation:none; }
+  body.light-theme a[href^="#"][data-tab-link="contact"][style*="background: transparent"]{
+    color:#0891b2 !important; border-color:rgba(8,145,178,.4) !important;
+  }
 
-/* Dropdown Services */
-.dropdown{margin:20px auto;width:90%;max-width:600px;background:white;border-radius:10px;box-shadow:0 3px 10px rgba(0,0,0,0.2);overflow:hidden;}
-.dropdown h3{background:#064bbb;color:white;padding:10px;cursor:pointer;font-size:18px;}
-.dropdown-content{display:none;background:#f1f1f1;padding:15px 25px;text-align:left;}
-.dropdown-content ul{list-style-type:disc;padding-left:25px;}
-.dropdown-content li{margin-bottom:8px;cursor:pointer;}
-.dropdown-content li:hover{color:#064bbb;text-decoration:underline;}
-
-/* Buttons */
-.btn{display:inline-block;color:white;padding:12px 20px;border-radius:8px;margin:10px;text-decoration:none;font-weight:600;box-shadow:0 3px 6px rgba(0,0,0,0.2);transition:transform 0.2s;}
-.btn:hover{transform:scale(1.05);}
-.btn-whatsapp{background:#25d366;}
-.btn-facebook{background:#1877f2;}
-.btn-youtube{background:#ff0000;}
-
-/* Floating Buttons */
-.floating-whatsapp,.floating-help{position:fixed;bottom:20px;color:white;padding:15px 20px;border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,0.3);font-size:16px;cursor:pointer;text-align:center;z-index:1000;font-weight:600;text-decoration:none;}
-.floating-whatsapp{left:20px;background:#25d366;}
-.floating-help{right:20px;background:#ff9800;}
-
-/* Hire Btn */
-.hire-btn{background-color:#ff4b2b;color:white;border:none;border-radius:8px;font-size:20px;font-weight:600;padding:15px 35px;cursor:pointer;box-shadow:0 5px 10px rgba(0,0,0,0.4);transition:transform 0.2s,opacity 0.3s;margin-top:20px;}
-.hire-btn:hover{opacity:0.9;transform:scale(1.05);}
-
-/* Hire Popup Form */
-.form-popup{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.6);justify-content:center;align-items:center;z-index:1000;}
-.form-popup form{background:#fff;padding:25px;border-radius:15px;width:320px;box-shadow:0 5px 15px rgba(0,0,0,0.3);}
-.form-popup form input,.form-popup form textarea{width:100%;padding:8px;margin:8px 0;border:1px solid #ddd;border-radius:5px;}
-.form-popup form button{color:white;border:none;padding:10px 20px;border-radius:8px;cursor:pointer;font-weight:bold;margin:5px;}
-.form-popup form button[type="submit"]{background:#064bbb;}
-.form-popup form button[type="button"]{background:#ff0000;}
-.form-popup form button:hover{opacity:0.85;}
-
-/* Marquee */
-marquee{background:#0cf12b;color:white;font-weight:bold;padding:8px;}
-
-/* Footer */
-footer{text-align:center;padding:10px;color:#064bbb;font-weight:600;}
-
-/* Feedback */
-.feedback{background:rgba(255,255,255,0.9);border-radius:10px;max-width:900px;margin:30px auto;padding:25px;box-shadow:0 3px 10px rgba(0,0,0,0.2);}
-.feedback-card{display:flex;align-items:center;background:#f1f7fc;border-radius:10px;padding:10px;margin:10px 0;}
-.feedback-avatar{width:60px;height:60px;border-radius:50%;margin-right:15px;background:#064bbb;color:white;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:bold;text-transform:uppercase;}
-.feedback-form input,.feedback-form select,.feedback-form textarea{width:100%;padding:10px;margin:8px 0;border:1px solid #ccc;border-radius:8px;}
-.feedback-form button{background:#064bbb;color:white;border:none;padding:10px 20px;border-radius:8px;cursor:pointer;font-weight:bold;}
-.feedback-form button:hover{background:#0b60d1;}
-
-/* Gallery */
-.gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px;margin-top:20px;}
-.gallery-grid img{width:100%;border-radius:10px;box-shadow:0 3px 10px rgba(0,0,0,0.3);}
-
-/* Floating CV Button */
-.cv-float {position: fixed;top: 20px;right: 20px;z-index:9999;display: inline-flex;align-items: center;gap: 10px;padding: 12px 22px;background: linear-gradient(135deg, #0a66c2, #084b8a);color: #fff;font-size: 15px;font-weight: 600;text-decoration: none;border-radius: 50px;box-shadow: 0 8px 20px rgba(0,0,0,0.25);transition: transform 0.25s ease, box-shadow 0.25s ease;}
-.cv-float:hover {transform: translateY(-3px);box-shadow: 0 12px 26px rgba(0,0,0,0.3);}
-@keyframes shake {0% { transform: translateX(0); }15% { transform: translateX(-2px); }30% { transform: translateX(2px); }45% { transform: translateX(-2px); }60% { transform: translateX(2px); }100% { transform: translateX(0); }}
-.shake {animation: shake 3s infinite;}
-</style>
-</head>
-<body>
-
-<header>
-<div>
-<h1>WELCOME TO</h1>
-<h1>BRIANSEVERALL SOLUTIONS</h1>
-<p>Your Trusted Tech Partner</p>
-</div>
-</header>
-
-<nav>
-<a href="#home">Home</a>
-<a href="#about">About Us</a>
-<a href="#services">Services We Offer</a>
-<a href="#feedback">Client Feedback</a>
-<a href="#contact">Contact Us</a>
-<a href="admin.html" target="_blank">Admin</a>
-</nav>
-
-<section id="home">
-<h2>Empowering You Through Technology</h2>
-<p>We build digital solutions that transform your business and simplify your life.</p>
-<button class="hire-btn" id="hireMeBtn">Click to Hire Us</button>
-</section>
-
-<section id="about">
-<img src="https://i.postimg.cc/T1fNpXr3/Whats-App-Image-2025-06-13-at-12-11-17.jpg" alt="CEO Photo">
-<div class="about-text">
-<h2>About Me (CEO)</h2>
-<p>Hi, I’m Brian Kiprop Bett, a dedicated web developer and ICT specialist proudly rooted in Nandi Hills, Kenya. With a Diploma in Information Communication Technology (ICT), I’ve immersed myself in the ever-evolving digital world, equipping myself with skills to solve real-world problems using technology. My journey in ICT began with a strong desire to bridge the digital gap in my community and help businesses transition into the digital age. From building dynamic websites to offering hands-on tech support, I’ve committed my career to helping others grow through technology.
-
-I specialize in a wide range of ICT services, including web development, system administration, cyber services, computer networking, programming, virtual assistance, and general digital support. Whether you need a secure business system, a clean website, or expert help in managing your ICT infrastructure, I’m here to deliver reliable, professional solutions. Each project I handle is guided by the goal of using technology to empower individuals and organizations, and to make a lasting impact in the digital space.</p>
-</div>
-</section>
-
-<section id="about">
-<img src="https://uploads.onecompiler.io/43unes7px/449qf9bh5/WhatsApp%20Image%202026-01-05%20at%2020.18.55.jpeg" alt="Brianseverall sollutions logo">
-<div class="about-text">
-<h2>About Brianseverall Solutions</h2>
-<p>Founded in 2022, Brianseverall Solutions is a fast-growing Kenyan brand dedicated to empowering individuals, businesses, and institutions through innovative digital and ICT solutions. What began as a small vision has grown into a trusted name in tech, creativity, and content production.
-
-Our foundation is built on integrity, community impact, and the desire to offer practical solutions to real challenges in today's digital world. We are passionate about uplifting local talent, supporting small businesses, and delivering services that make a difference.
-
-Over the years, Brianseverall Solutions has become more than just a service provider — it's a hub of creativity, digital empowerment, and transformation.</p>
-</div>
-</section>
-
-<section id="gallery">
-<h2>Gallery</h2>
-<div class="gallery-grid">
-<img src="https://i.postimg.cc/mDyvQ1vQ/Whats-App-Image-2025-06-13-at-16-43-44.jpg" alt="Gallery 1">
-<img src="https://i.postimg.cc/5y9ZpNJD/Whats-App-Image-2025-06-13-at-16-43-44-1.jpg" alt="Gallery 2">
-<img src="https://i.postimg.cc/T1fNpXr3/Whats-App-Image-2025-06-13-at-12-11-17.jpg" alt="Gallery 3">
-</div>
-</section>
-
-<section id="services">
-<h2>Services We Offer</h2>
-<div class="dropdown">
-<h3 onclick="toggleDropdown('ict')">Click for ICT Proficiency Services</h3>
-<div id="ict" class="dropdown-content">
-<ul>
-<li>System Administration</li>
-<li>Web Design & Development</li>
-<li>Networking & Cybersecurity</li>
-<li>Database Design & Management</li>
-<li>Software Installation & Troubleshooting</li>
-<li>Cloud Computing & Virtualization</li>
-<li>IT Support & Help Desk Services</li>
-<li>Virtual Assistance</li>
-</ul>
-</div>
-</div>
-<div class="dropdown">
-<h3 onclick="toggleDropdown('cyber')">Click for Cyber Services</h3>
-<div id="cyber" class="dropdown-content">
-<ul>
-<li>KRA Service</li>
-<li>SHA Registration</li>
-<li>HELB & Scholarship</li>
-<li>Filing of Return</li>
-<li>Trade and Business Plan Writing</li>
-<li>KUCCPS Application</li>
-<li>Good Conduct Download</li>
-<li>CV Writing</li>
-<li>Posters & Flyers Design</li>
-<li>Certificate Design</li>
-<li>Wedding Cards</li>
-<li>Harambee Cards</li>
-<li>Pre-wedding Cards</li>
-</ul>
-</div>
-</div>
-</section>
-
-<section id="feedback" class="feedback">
-<h2>Client Feedback</h2>
-<div id="feedbackList"></div>
-<h3>Add Your Feedback</h3>
-<form id="feedbackForm" class="feedback-form">
-<input type="text" id="fbName" placeholder="Your Name" required>
-<select id="fbGender" required>
-<option value="">Select Gender</option>
-<option value="male">Male</option>
-<option value="female">Female</option>
-</select>
-<textarea id="fbText" placeholder="Your Feedback" required></textarea>
-<button type="submit">Submit Feedback</button>
-</form>
-</section>
-
-<section id="contact">
-<h2>Contact Us</h2>
-<a href="https://wa.me/254115769984" class="btn btn-whatsapp">💬 Chat With Us on WhatsApp</a>
-<a href="https://www.facebook.com/BRIANSEVERALL10" class="btn btn-facebook">📘 Follow Us on Facebook</a>
-<a href="https://youtube.com/@brianseverall?si=R24sr054p8lAyEY7" class="btn btn-youtube">▶️ Watch Us on YouTube</a>
-</section>
-
-<marquee behavior="scroll" direction="left" scrollamount="4">
-🚀 Welcome to Brianseverall Solutions | Your Tech Partner | Call: +254754415514 | WhatsApp: 0115769984 | #DigitalKenya 💻🌐
-</marquee>
-
-<footer>&copy; 2026 Brianseverall Solutions | All Rights Reserved</footer>
-
-<!-- Floating Buttons -->
-<a class="floating-whatsapp" href="https://wa.me/254115769984" target="_blank">💬 WhatsApp</a>
-<a class="floating-help" href="tel:+254754415514">CLICK FOR HELP</a>
-
-<!-- Floating CV Button -->
-<a href="cv.pdf" download class="cv-float shake"><i class="fa fa-file-pdf"></i> Download CV</a>
-
-<!-- Hire Form Popup -->
-<div id="hireFormPopup" class="form-popup">
-<form id="hireForm" action="https://formsubmit.co/brianseverallsolutions@gmail.com" method="POST">
-<h2>Hire Us</h2>
-<input type="text" name="name" placeholder="Your Name" required>
-<input type="email" name="email" placeholder="Your Email" required>
-<textarea name="message" rows="4" placeholder="Your Message" required></textarea>
-<button type="submit">Send Message</button>
-<button type="button" id="closeFormBtn">Cancel</button>
-</form>
-</div>
-
-<script>
-// Hire popup
-const hirePopup = document.getElementById("hireFormPopup");
-const closeBtn = document.getElementById("closeFormBtn");
-
-// Open Hire Form when Hire Me button is clicked
-document.getElementById("hireMeBtn").addEventListener("click", () => hirePopup.style.display = "flex");
-
-// Close Hire Form
-closeBtn.addEventListener("click", () => hirePopup.style.display = "none");
-
-// Dropdown toggle
-function toggleDropdown(id){
-  const content = document.getElementById(id);
-  content.style.display = (content.style.display === "block") ? "none" : "block";
-}
-
-// Open Hire Form when any service item is clicked
-document.querySelectorAll(".dropdown-content li").forEach(item => {
-  item.addEventListener("click", () => {
-    hirePopup.style.display = "flex";
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-});
-
-// Feedback system
-const feedbackForm = document.getElementById("feedbackForm");
-const feedbackList = document.getElementById("feedbackList");
-
-function renderFeedback(){
-  feedbackList.innerHTML = "";
-  const feedbacks = JSON.parse(localStorage.getItem("feedbacks") || "[]");
-  feedbacks.forEach(f => {
-    const div = document.createElement("div");
-    div.className = "feedback-card";
-    const initial = f.name.charAt(0).toUpperCase();
-    div.innerHTML = `<div class='feedback-avatar'>${initial}</div><div><strong>${f.name}</strong><p>${f.text}</p></div>`;
-    feedbackList.appendChild(div);
-  });
-}
-
-feedbackForm.addEventListener("submit", e => {
-  e.preventDefault();
-  const name = document.getElementById("fbName").value.trim();
-  const gender = document.getElementById("fbGender").value;
-  const text = document.getElementById("fbText").value.trim();
-  const feedbacks = JSON.parse(localStorage.getItem("feedbacks") || "[]");
-  feedbacks.push({name, gender, text});
-  localStorage.setItem("feedbacks", JSON.stringify(feedbacks));
-  feedbackForm.reset();
-  renderFeedback();
-});
-
-renderFeedback();
-  function showWarning() {
-    if (document.getElementById("dev-warning-popup")) return;
-
-    const popup = document.createElement("div");
-    popup.id = "dev-warning-popup";
-
-    popup.innerHTML = `
-        <div style="
-            position:fixed;
-            top:20px;
-            right:20px;
-            background:#fff;
-            padding:20px;
-            border-radius:15px;
-            box-shadow:0 4px 15px rgba(0,0,0,0.25);
-            text-align:center;
-            z-index:99999;
-            width:250px;
-            font-family:Arial,sans-serif;
-        ">
-            <div style="font-size:70px;">😂</div>
-            <h3>Nice try!</h3>
-            <p>😂 Nice try my friend! Contact <b>BRIANSEVERALL</b> if you need help.</p>
+  .cv-btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:10px 20px; background:linear-gradient(135deg,#0a66c2,#084b8a);
+    color:#fff; font-size:15px; font-weight:600; text-decoration:none;
+    border-radius:50px; box-shadow:0 8px 20px rgba(0,0,0,.25);
+    transition:transform .25s ease, box-shadow .25s ease; margin-top:14px;
+  }
+  .cv-btn:hover{ transform:translateY(-3px); box-shadow:0 12px 26px rgba(0,0,0,.3); }
+  @keyframes shake{
+    0%{transform:translateX(0);} 15%{transform:translateX(-2px);}
+    30%{transform:translateX(2px);} 45%{transform:translateX(-2px);}
+    60%{transform:translateX(2px);} 100%{transform:translateX(0);}
+  }
+  .shake{ animation:shake 3s infinite; }
+  </style>
+  <script src="/_sdk/9432170dbd2ae0df.resizing_sdk.js" type="text/javascript" integrity="sha512-FeT+58sb1f9ejWPWFjCbJvTT+SDwGV+ngrHUnlO7TWEOoqwOLj6p256kO3vOL7DIWl1cIgrobiof8v2bOigwPg=="></script>
+  <script src="/_sdk/0179d719c431a79e.data_sdk.js" type="text/javascript" integrity="sha512-OsRvJkI5GkC3MJQcgotQYotpzrMSX415GiKKgvYdxQEEkzD/fdchShO2FMSy0PJr/tiINMXOk5Vl2zAgg6bUiA=="></script>
+ </head>
+ <body data-template-id="__page-root" class="min-h-screen text-slate-200" style="background: linear-gradient(rgb(2, 6, 23), rgb(11, 18, 32));">
+  <div class="w-full min-h-screen grid-bg"><!-- HEADER -->
+   <header class="sticky top-0 z-40 backdrop-blur bg-slate-950/80 border-b border-cyan-500/20">
+    <div class="max-w-7xl mx-auto px-5 py-3 flex items-center justify-between gap-4">
+     <div class="flex items-center gap-3"><img data-template-id="site-logo-img" loading="lazy" class="canva-image w-10 h-10 rounded-lg object-cover" src="https://uploads.onecompiler.io/43unes7px/449qf9bh5/WhatsApp%20Image%202026-01-05%20at%2020.18.55.jpeg" alt="Brianseverall Solutions logo">
+      <h1 data-template-id="site-logo-text" class="canva-text font-extrabold" style="color: rgb(226, 232, 240); font-weight: 800; font-style: normal; font-size: 18px;">Brianseverall Solutions</h1>
+     </div>
+     <nav class="flex items-center gap-4">
+      <ul id="tab-list" class="hidden lg:flex items-center gap-5">
+       <li><button data-tab="home" data-template-id="tab-home" class="tab-btn canva-link pb-1 font-medium active" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Home</button></li>
+       <li><button data-tab="about" data-template-id="tab-about" class="tab-btn canva-link pb-1 font-medium" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">About</button></li>
+       <li><button data-tab="courses" data-template-id="tab-courses" class="tab-btn canva-link pb-1 font-medium" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Courses</button></li>
+       <li><button data-tab="services" data-template-id="tab-services" class="tab-btn canva-link pb-1 font-medium" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Services</button></li>
+       <li><button data-tab="portfolio" data-template-id="tab-portfolio" class="tab-btn canva-link pb-1 font-medium" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Portfolio</button></li>
+       <li><button data-tab="team" data-template-id="tab-team" class="tab-btn canva-link pb-1 font-medium" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Team</button></li>
+       <li><button data-tab="gallery" data-template-id="tab-gallery" class="tab-btn canva-link pb-1 font-medium" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Gallery</button></li>
+       <li><button data-tab="contact" data-template-id="tab-contact" class="tab-btn canva-link pb-1 font-medium" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Contact</button></li>
+       <li><a href="admin.html" target="_blank" rel="noopener noreferrer" data-template-id="tab-admin" class="canva-link pb-1 font-medium" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Admin</a></li>
+      </ul><a data-template-id="hire-button" href="#" data-tab-link="contact" class="canva-button hidden sm:inline-block px-4 py-2 rounded-lg font-semibold" style="background: rgb(6, 182, 212); color: rgb(0, 16, 24); font-weight: 700; font-style: normal; font-size: 16px;">Hire Us</a>
+      <button id="theme-toggle" type="button" aria-label="Toggle light/dark theme" title="Toggle light/dark theme">
+       <span class="icon-moon"><i data-lucide="moon" style="width:18px;height:18px;"></i></span>
+       <span class="icon-sun"><i data-lucide="sun" style="width:18px;height:18px;"></i></span>
+      </button>
+      <button id="menu-toggle" aria-label="Menu" class="lg:hidden text-cyan-300 p-2"><i data-lucide="menu"></i></button>
+     </nav>
+    </div>
+    <ul id="mobile-menu" class="lg:hidden hidden flex-col gap-1 px-5 pb-4 border-t border-cyan-500/20 bg-slate-950/95">
+     <li><button data-tab="home" data-template-id="mtab-home" class="canva-link w-full text-left py-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Home</button></li>
+     <li><button data-tab="about" data-template-id="mtab-about" class="canva-link w-full text-left py-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">About</button></li>
+     <li><button data-tab="courses" data-template-id="mtab-courses" class="canva-link w-full text-left py-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Courses</button></li>
+     <li><button data-tab="services" data-template-id="mtab-services" class="canva-link w-full text-left py-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Services</button></li>
+     <li><button data-tab="portfolio" data-template-id="mtab-portfolio" class="canva-link w-full text-left py-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Portfolio</button></li>
+     <li><button data-tab="team" data-template-id="mtab-team" class="canva-link w-full text-left py-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Team</button></li>
+     <li><button data-tab="gallery" data-template-id="mtab-gallery" class="canva-link w-full text-left py-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Gallery</button></li>
+     <li><button data-tab="contact" data-template-id="mtab-contact" class="canva-link w-full text-left py-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Contact</button></li>
+     <li><a href="admin.html" target="_blank" rel="noopener noreferrer" data-template-id="mtab-admin" class="canva-link w-full text-left py-2 block" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Admin</a></li>
+    </ul>
+   </header>
+   <main class="max-w-7xl mx-auto px-5 py-10"><!-- HOME -->
+    <section data-panel="home" class="panel">
+     <div class="grid lg:grid-cols-2 gap-10 items-center">
+      <div>
+       <p data-template-id="home-eyebrow" class="canva-text mono tracking-widest text-cyan-400" style="color: rgb(34, 211, 238); font-weight: 400; font-style: normal; font-size: 13px;">WELCOME TO</p>
+       <h2 data-template-id="home-title" class="canva-text font-extrabold leading-tight mt-2" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 24px;">Brianseverall Solutions</h2>
+       <p data-template-id="home-tagline" class="canva-text text-cyan-300 mt-3" style="color: rgb(103, 232, 249); font-weight: 400; font-style: normal; font-size: 18px;">Digital Solutions &amp; ICT Services</p>
+       <p data-template-id="home-desc" class="canva-text text-slate-300 mt-4 max-w-lg" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Empowering businesses, institutions and individuals through innovative technology, professional ICT consultancy and creative digital solutions.</p>
+       <p data-template-id="home-founder-bio" class="canva-text text-slate-400 mt-4 max-w-lg text-sm" style="color: rgb(148, 163, 184); font-weight: 400; font-style: normal; font-size: 16px;">Led by Brian Kiprop Bett, an IT graduate with a passion for delivering innovative digital solutions to businesses and organizations across Kenya.</p>
+       <p data-template-id="home-company-found" class="canva-text text-slate-400 mt-2 max-w-lg text-sm" style="color: rgb(148, 163, 184); font-weight: 400; font-style: normal; font-size: 16px;">Brianseverall Solutions was founded in 2022 to bridge the digital transformation gap through professional ICT services and technical excellence.</p>
+       <div class="flex flex-wrap gap-3 mt-6"><a data-template-id="home-cta-primary" href="#" data-tab-link="services" class="canva-button px-5 py-3 rounded-lg font-semibold" style="background: rgb(6, 182, 212); color: rgb(0, 16, 24); font-weight: 700; font-style: normal; font-size: 16px;">Explore Services</a> <a data-template-id="home-cta-secondary" href="#" data-tab-link="contact" class="canva-button px-5 py-3 rounded-lg font-semibold border border-cyan-500/40" style="background: transparent; color: rgb(103, 232, 249); font-weight: 600; font-style: normal; font-size: 16px;">Contact Us</a>
+        <a data-template-id="home-cta-youtube" href="https://www.youtube.com/@brianseverall" target="_blank" rel="noopener noreferrer" class="canva-button px-5 py-3 rounded-lg font-semibold flex items-center gap-2" style="background: rgb(220, 38, 38); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;"><i data-lucide="youtube" style="width:18px;height:18px;"></i>YouTube</a>
+       </div>
+       <div class="grid grid-cols-3 gap-4 mt-8 max-w-md">
+        <div class="text-center">
+         <p data-template-id="stat1-num" class="canva-text font-extrabold text-cyan-400" style="color: rgb(34, 211, 238); font-weight: 400; font-style: normal; font-size: 26px;">120+</p>
+         <p data-template-id="stat1-label" class="canva-text text-slate-400 text-sm" style="color: rgb(148, 163, 184); font-weight: 400; font-style: normal; font-size: 16px;">Projects</p>
         </div>
-    `;
+        <div class="text-center">
+         <p data-template-id="stat2-num" class="canva-text font-extrabold text-cyan-400" style="color: rgb(34, 211, 238); font-weight: 400; font-style: normal; font-size: 26px;">500+</p>
+         <p data-template-id="stat2-label" class="canva-text text-slate-400 text-sm" style="color: rgb(148, 163, 184); font-weight: 400; font-style: normal; font-size: 16px;">Clients</p>
+        </div>
+        <div class="text-center">
+         <p data-template-id="stat3-num" class="canva-text font-extrabold text-cyan-400" style="color: rgb(34, 211, 238); font-weight: 400; font-style: normal; font-size: 26px;">4+</p>
+         <p data-template-id="stat3-label" class="canva-text text-slate-400 text-sm" style="color: rgb(148, 163, 184); font-weight: 400; font-style: normal; font-size: 16px;">Years</p>
+        </div>
+       </div>
+      </div>
+      <div class="relative scanline rounded-2xl overflow-hidden border border-cyan-500/30"><img data-template-id="hero-image" loading="lazy" class="canva-image w-full h-80 lg:h-[420px] object-cover" src="https://uploads.onecompiler.io/43unes7px/449qf9bh5/WhatsApp%20Image%202026-01-05%20at%2020.18.55.jpeg" alt="Brianseverall Solutions">
+      </div>
+     </div>
+    </section><!-- ABOUT -->
+    <section data-panel="about" class="panel hidden">
+     <h2 data-template-id="about-title" class="canva-text font-extrabold text-center" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 24px;">About Us</h2>
+     <p data-template-id="about-sub" class="canva-text text-center text-cyan-300 mt-1" style="color: rgb(103, 232, 249); font-weight: 400; font-style: normal; font-size: 16px;">Who We Are</p>
+     <div class="grid lg:grid-cols-2 gap-8 items-start mt-8"><img data-template-id="founder-portrait" loading="lazy" class="canva-image w-full h-96 object-cover rounded-2xl border border-cyan-500/30" src="https://uploads.onecompiler.io/43unes7px/1783763709554/WhatsApp%20Image%202026-07-11%20at%2012.54.41.jpeg" alt="Brian Kiprop Bett, Founder and CEO">
+      <div>
+       <h3 data-template-id="founder-name" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 19px;">Brian Kiprop Bett</h3>
+       <p data-template-id="founder-role" class="canva-text text-cyan-400" style="color: rgb(34, 211, 238); font-weight: 400; font-style: normal; font-size: 16px;">Founder &amp; CEO</p>
+       <a data-template-id="founder-cv-download" href="cv.pdf" download="Brian_Kiprop_Bett_CV.pdf" class="cv-btn shake"><i class="fa fa-file-pdf"></i> Download CV</a>
+       <p data-template-id="about-desc" class="canva-text text-slate-300 mt-3" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Brianseverall Solutions is a modern ICT company based in Kenya committed to delivering world-class digital solutions to businesses, organizations and individuals. Our services combine innovation, technology and professionalism.</p>
+       <div class="grid sm:grid-cols-3 gap-4 mt-6">
+        <div data-template-id="mv-mission" class="canva-card p-4 rounded-xl" style="background: rgb(15, 23, 42);">
+         <i data-lucide="target" class="text-cyan-400 mb-2"></i>
+         <h4 data-template-id="mv-mission-t" class="canva-text font-semibold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 16px;">Mission</h4>
+         <p data-template-id="mv-mission-d" class="canva-text text-sm text-slate-300 mt-1" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Deliver affordable professional digital solutions.</p>
+        </div>
+        <div data-template-id="mv-vision" class="canva-card p-4 rounded-xl" style="background: rgb(15, 23, 42);">
+         <i data-lucide="eye" class="text-cyan-400 mb-2"></i>
+         <h4 data-template-id="mv-vision-t" class="canva-text font-semibold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 16px;">Vision</h4>
+         <p data-template-id="mv-vision-d" class="canva-text text-sm text-slate-300 mt-1" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Become Africa's trusted digital solutions provider.</p>
+        </div>
+        <div data-template-id="mv-values" class="canva-card p-4 rounded-xl" style="background: rgb(15, 23, 42);">
+         <i data-lucide="heart" class="text-cyan-400 mb-2"></i>
+         <h4 data-template-id="mv-values-t" class="canva-text font-semibold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 16px;">Values</h4>
+         <p data-template-id="mv-values-d" class="canva-text text-sm text-slate-300 mt-1" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Integrity, Innovation, Professionalism, Commitment.</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section><!-- COURSES -->
+    <section data-panel="courses" class="panel hidden">
+     <h2 data-template-id="courses-title" class="canva-text font-extrabold text-center" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 24px;">Our Courses</h2>
+     <p data-template-id="courses-sub" class="canva-text text-center text-cyan-300 mt-1" style="color: rgb(103, 232, 249); font-weight: 400; font-style: normal; font-size: 16px;">Professional ICT &amp; Technical Training</p>
+     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-8">
+      <div data-template-id="course-1" class="canva-card p-5 rounded-2xl" style="background: rgb(15, 23, 42);">
+       <i data-lucide="graduation-cap" class="text-cyan-400 mb-3"></i>
+       <h3 data-template-id="course-1-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 19px;">Basic Computer Packages</h3>
+       <p data-template-id="course-1-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Master MS Word, Excel, PowerPoint, Internet use and essential OS setups.</p>
+       <p data-template-id="course-1-dur" class="canva-text mono text-cyan-400 text-sm mt-3" style="color: rgb(34, 211, 238); font-weight: 400; font-style: normal; font-size: 13px;">4 Weeks</p>
+      </div>
+      <div data-template-id="course-2" class="canva-card p-5 rounded-2xl" style="background: rgb(15, 23, 42);">
+       <i data-lucide="code" class="text-cyan-400 mb-3"></i>
+       <h3 data-template-id="course-2-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 19px;">Web Design &amp; Dev</h3>
+       <p data-template-id="course-2-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Design modern interfaces using HTML, CSS and JavaScript.</p>
+       <p data-template-id="course-2-dur" class="canva-text mono text-cyan-400 text-sm mt-3" style="color: rgb(34, 211, 238); font-weight: 400; font-style: normal; font-size: 13px;">8 Weeks</p>
+      </div>
+      <div data-template-id="course-3" class="canva-card p-5 rounded-2xl" style="background: rgb(15, 23, 42);">
+       <i data-lucide="shield" class="text-cyan-400 mb-3"></i>
+       <h3 data-template-id="course-3-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 19px;">Cyber Security Intro</h3>
+       <p data-template-id="course-3-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Threat protection, network defense and basic ethical hacking.</p>
+       <p data-template-id="course-3-dur" class="canva-text mono text-cyan-400 text-sm mt-3" style="color: rgb(34, 211, 238); font-weight: 400; font-style: normal; font-size: 13px;">6 Weeks</p>
+      </div>
+      <div data-template-id="course-4" class="canva-card p-5 rounded-2xl" style="background: rgb(15, 23, 42);">
+       <i data-lucide="share-2" class="text-cyan-400 mb-3"></i>
+       <h3 data-template-id="course-4-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 19px;">Networking Essentials</h3>
+       <p data-template-id="course-4-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Hands-on routing, IP structures, switches and topologies.</p>
+       <p data-template-id="course-4-dur" class="canva-text mono text-cyan-400 text-sm mt-3" style="color: rgb(34, 211, 238); font-weight: 400; font-style: normal; font-size: 13px;">6 Weeks</p>
+      </div>
+     </div>
+    </section><!-- SERVICES -->
+    <section data-panel="services" class="panel hidden">
+     <h2 data-template-id="services-title" class="canva-text font-extrabold text-center" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 24px;">Our Services</h2>
+     <p data-template-id="services-sub" class="canva-text text-center text-cyan-300 mt-1" style="color: rgb(103, 232, 249); font-weight: 400; font-style: normal; font-size: 16px;">What We Do Best</p><!-- ICT Solutions -->
+     <h3 data-template-id="svc-cat-1" class="canva-text font-bold mono text-cyan-400 mt-10 mb-4" style="color: rgb(34, 211, 238); font-weight: 400; font-style: normal; font-size: 18px;">// ICT Solutions</h3>
+     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div data-template-id="svc-1" class="svc-card canva-card relative scanline p-5 rounded-2xl bg-slate-900/60" style="background: rgb(15, 23, 42);">
+       <i data-lucide="laptop" class="text-cyan-400 mb-3"></i>
+       <h4 data-template-id="svc-1-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 18px;">Web Design &amp; Development</h4>
+       <p data-template-id="svc-1-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Modern websites, web apps and eCommerce systems.</p>
+      </div>
+      <div data-template-id="svc-2" class="svc-card canva-card relative scanline p-5 rounded-2xl bg-slate-900/60" style="background: rgb(15, 23, 42);">
+       <i data-lucide="server" class="text-cyan-400 mb-3"></i>
+       <h4 data-template-id="svc-2-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 18px;">System Administration</h4>
+       <p data-template-id="svc-2-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Windows &amp; Linux server installation and management.</p>
+      </div>
+      <div data-template-id="svc-3" class="svc-card canva-card relative scanline p-5 rounded-2xl bg-slate-900/60" style="background: rgb(15, 23, 42);">
+       <i data-lucide="code-2" class="text-cyan-400 mb-3"></i>
+       <h4 data-template-id="svc-3-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 18px;">ICT Solutions</h4>
+       <p data-template-id="svc-3-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">End-to-end ICT consultancy and digital transformation.</p>
+      </div>
+      <div data-template-id="svc-4" class="svc-card canva-card relative scanline p-5 rounded-2xl bg-slate-900/60" style="background: rgb(15, 23, 42);">
+       <i data-lucide="shield-check" class="text-cyan-400 mb-3"></i>
+       <h4 data-template-id="svc-4-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 18px;">Networking &amp; Cybersecurity</h4>
+       <p data-template-id="svc-4-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">LAN/WAN, WiFi setup plus threat protection and defense.</p>
+      </div>
+      <div data-template-id="svc-5" class="svc-card canva-card relative scanline p-5 rounded-2xl bg-slate-900/60" style="background: rgb(15, 23, 42);">
+       <i data-lucide="database" class="text-cyan-400 mb-3"></i>
+       <h4 data-template-id="svc-5-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 18px;">Database Design &amp; Management</h4>
+       <p data-template-id="svc-5-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">MySQL, SQL Server, backups, optimization and design.</p>
+      </div>
+      <div data-template-id="svc-6" class="svc-card canva-card relative scanline p-5 rounded-2xl bg-slate-900/60" style="background: rgb(15, 23, 42);">
+       <i data-lucide="wrench" class="text-cyan-400 mb-3"></i>
+       <h4 data-template-id="svc-6-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 18px;">Software Installation &amp; Troubleshooting</h4>
+       <p data-template-id="svc-6-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Fast setup, updates and repair for all your software.</p>
+      </div>
+      <div data-template-id="svc-7" class="svc-card canva-card relative scanline p-5 rounded-2xl bg-slate-900/60" style="background: rgb(15, 23, 42);">
+       <i data-lucide="cloud" class="text-cyan-400 mb-3"></i>
+       <h4 data-template-id="svc-7-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 18px;">Cloud Computing &amp; Virtualization</h4>
+       <p data-template-id="svc-7-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Cloud deployment, migration, hosting and virtualization.</p>
+      </div>
+      <div data-template-id="svc-8" class="svc-card canva-card relative scanline p-5 rounded-2xl bg-slate-900/60" style="background: rgb(15, 23, 42);">
+       <i data-lucide="headphones" class="text-cyan-400 mb-3"></i>
+       <h4 data-template-id="svc-8-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 18px;">IT Support &amp; Help Desk Services</h4>
+       <p data-template-id="svc-8-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Responsive technical support and remote help desk.</p>
+      </div>
+      <div data-template-id="svc-9" class="svc-card canva-card relative scanline p-5 rounded-2xl bg-slate-900/60" style="background: rgb(15, 23, 42);">
+       <i data-lucide="user-cog" class="text-cyan-400 mb-3"></i>
+       <h4 data-template-id="svc-9-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 18px;">Virtual Assistance</h4>
+       <p data-template-id="svc-9-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Remote administrative and digital task support.</p>
+      </div>
+     </div><!-- Cyber & Business Services -->
+     <h3 data-template-id="svc-cat-2" class="canva-text font-bold mono text-cyan-400 mt-10 mb-4" style="color: rgb(34, 211, 238); font-weight: 400; font-style: normal; font-size: 18px;">// Cyber &amp; Business Services</h3>
+     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div data-template-id="svc-10" class="svc-card canva-card relative scanline p-5 rounded-2xl bg-slate-900/60" style="background: rgb(15, 23, 42);">
+       <i data-lucide="landmark" class="text-cyan-400 mb-3"></i>
+       <h4 data-template-id="svc-10-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 18px;">KRA Services</h4>
+       <p data-template-id="svc-10-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">PIN registration, KRA account help and support.</p>
+      </div>
+      <div data-template-id="svc-11" class="svc-card canva-card relative scanline p-5 rounded-2xl bg-slate-900/60" style="background: rgb(15, 23, 42);">
+       <i data-lucide="heart-pulse" class="text-cyan-400 mb-3"></i>
+       <h4 data-template-id="svc-11-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 18px;">SHA Registration</h4>
+       <p data-template-id="svc-11-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Fast and accurate SHA registration assistance.</p>
+      </div>
+      <div data-template-id="svc-12" class="svc-card canva-card relative scanline p-5 rounded-2xl bg-slate-900/60" style="background: rgb(15, 23, 42);">
+       <i data-lucide="book-open" class="text-cyan-400 mb-3"></i>
+       <h4 data-template-id="svc-12-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 18px;">HELB &amp; Scholarship Assistance</h4>
+       <p data-template-id="svc-12-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">HELB applications and scholarship application help.</p>
+      </div>
+      <div data-template-id="svc-13" class="svc-card canva-card relative scanline p-5 rounded-2xl bg-slate-900/60" style="background: rgb(15, 23, 42);">
+       <i data-lucide="file-check" class="text-cyan-400 mb-3"></i>
+       <h4 data-template-id="svc-13-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 18px;">Filing of Returns</h4>
+       <p data-template-id="svc-13-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Accurate KRA tax returns filed on time.</p>
+      </div>
+      <div data-template-id="svc-14" class="svc-card canva-card relative scanline p-5 rounded-2xl bg-slate-900/60" style="background: rgb(15, 23, 42);">
+       <i data-lucide="briefcase" class="text-cyan-400 mb-3"></i>
+       <h4 data-template-id="svc-14-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 18px;">Trade &amp; Business Plan Writing</h4>
+       <p data-template-id="svc-14-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Professional business and trade plan documents.</p>
+      </div>
+      <div data-template-id="svc-15" class="svc-card canva-card relative scanline p-5 rounded-2xl bg-slate-900/60" style="background: rgb(15, 23, 42);">
+       <i data-lucide="school" class="text-cyan-400 mb-3"></i>
+       <h4 data-template-id="svc-15-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 18px;">KUCCPS Application</h4>
+       <p data-template-id="svc-15-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Guided KUCCPS course placement applications.</p>
+      </div>
+      <div data-template-id="svc-16" class="svc-card canva-card relative scanline p-5 rounded-2xl bg-slate-900/60" style="background: rgb(15, 23, 42);">
+       <i data-lucide="badge-check" class="text-cyan-400 mb-3"></i>
+       <h4 data-template-id="svc-16-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 18px;">Good Conduct Download</h4>
+       <p data-template-id="svc-16-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Certificate of Good Conduct application and download.</p>
+      </div>
+      <div data-template-id="svc-17" class="svc-card canva-card relative scanline p-5 rounded-2xl bg-slate-900/60" style="background: rgb(15, 23, 42);">
+       <i data-lucide="file-text" class="text-cyan-400 mb-3"></i>
+       <h4 data-template-id="svc-17-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 18px;">CV Writing</h4>
+       <p data-template-id="svc-17-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">ATS-friendly CVs, cover letters and LinkedIn profiles.</p>
+      </div>
+      <div data-template-id="svc-18" class="svc-card canva-card relative scanline p-5 rounded-2xl bg-slate-900/60" style="background: rgb(15, 23, 42);">
+       <i data-lucide="user-round" class="text-cyan-400 mb-3"></i>
+       <h4 data-template-id="svc-18-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 18px;">Cyber &amp; Business Services</h4>
+       <p data-template-id="svc-18-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Full-service cyber cafe and business support desk.</p>
+      </div>
+     </div><!-- Design Services -->
+     <h3 data-template-id="svc-cat-3" class="canva-text font-bold mono text-cyan-400 mt-10 mb-4" style="color: rgb(34, 211, 238); font-weight: 400; font-style: normal; font-size: 18px;">// Design Services</h3>
+     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div data-template-id="svc-19" class="svc-card canva-card relative scanline p-5 rounded-2xl bg-slate-900/60" style="background: rgb(15, 23, 42);">
+       <i data-lucide="image" class="text-cyan-400 mb-3"></i>
+       <h4 data-template-id="svc-19-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 18px;">Posters &amp; Flyers Design</h4>
+       <p data-template-id="svc-19-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Eye-catching promotional posters and flyers.</p>
+      </div>
+      <div data-template-id="svc-20" class="svc-card canva-card relative scanline p-5 rounded-2xl bg-slate-900/60" style="background: rgb(15, 23, 42);">
+       <i data-lucide="award" class="text-cyan-400 mb-3"></i>
+       <h4 data-template-id="svc-20-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 18px;">Certificate Design</h4>
+       <p data-template-id="svc-20-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Elegant, custom certificate designs for any occasion.</p>
+      </div>
+      <div data-template-id="svc-21" class="svc-card canva-card relative scanline p-5 rounded-2xl bg-slate-900/60" style="background: rgb(15, 23, 42);">
+       <i data-lucide="heart" class="text-cyan-400 mb-3"></i>
+       <h4 data-template-id="svc-21-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 18px;">Wedding Cards Design</h4>
+       <p data-template-id="svc-21-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Beautiful, personalized wedding invitation cards.</p>
+      </div>
+      <div data-template-id="svc-22" class="svc-card canva-card relative scanline p-5 rounded-2xl bg-slate-900/60" style="background: rgb(15, 23, 42);">
+       <i data-lucide="gift" class="text-cyan-400 mb-3"></i>
+       <h4 data-template-id="svc-22-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 18px;">Harambee Cards Design</h4>
+       <p data-template-id="svc-22-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Stylish harambee and fundraising invitation cards.</p>
+      </div>
+      <div data-template-id="svc-23" class="svc-card canva-card relative scanline p-5 rounded-2xl bg-slate-900/60" style="background: rgb(15, 23, 42);">
+       <i data-lucide="sparkles" class="text-cyan-400 mb-3"></i>
+       <h4 data-template-id="svc-23-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 18px;">Pre-wedding Cards Design</h4>
+       <p data-template-id="svc-23-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Creative pre-wedding announcement cards.</p>
+      </div>
+      <div data-template-id="svc-24" class="svc-card canva-card relative scanline p-5 rounded-2xl bg-slate-900/60" style="background: rgb(15, 23, 42);">
+       <i data-lucide="palette" class="text-cyan-400 mb-3"></i>
+       <h4 data-template-id="svc-24-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 18px;">Posters &amp; Flyers Design</h4>
+       <p data-template-id="svc-24-d" class="canva-text text-sm text-slate-300 mt-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Branding, logos and complete visual identity kits.</p>
+      </div>
+     </div>
+    </section><!-- PORTFOLIO -->
+    <section data-panel="portfolio" class="panel hidden">
+     <h2 data-template-id="portfolio-title" class="canva-text font-extrabold text-center" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 24px;">Latest Projects</h2>
+     <p data-template-id="portfolio-sub" class="canva-text text-center text-cyan-300 mt-1" style="color: rgb(103, 232, 249); font-weight: 400; font-style: normal; font-size: 16px;">Some Of Our Recent Work</p>
+     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-8">
+      <div data-template-id="proj-1" class="canva-card rounded-2xl overflow-hidden" style="background: rgb(15, 23, 42);">
+       <img data-template-id="proj-1-img" loading="lazy" class="canva-image w-full h-40 object-cover" src="https://images.pexels.com/photos/18096282/pexels-photo-18096282.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Laptop showing a website">
+       <div class="p-4">
+        <h3 data-template-id="proj-1-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 19px;">Company Website</h3>
+        <p data-template-id="proj-1-d" class="canva-text text-sm text-slate-300 mt-1" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Responsive business website for a local company.</p>
+       </div>
+      </div>
+      <div data-template-id="proj-2" class="canva-card rounded-2xl overflow-hidden" style="background: rgb(15, 23, 42);">
+       <img data-template-id="proj-2-img" loading="lazy" class="canva-image w-full h-40 object-cover" src="https://images.pexels.com/photos/7688524/pexels-photo-7688524.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Calculator next to a company invoice">
+       <div class="p-4">
+        <h3 data-template-id="proj-2-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 19px;">Quotation System</h3>
+        <p data-template-id="proj-2-d" class="canva-text text-sm text-slate-300 mt-1" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Professional quotation generator with PDF export.</p>
+       </div>
+      </div>
+      <div data-template-id="proj-3" class="canva-card rounded-2xl overflow-hidden" style="background: rgb(15, 23, 42);">
+       <img data-template-id="proj-3-img" loading="lazy" class="canva-image w-full h-40 object-cover" src="https://images.pexels.com/photos/6207729/pexels-photo-6207729.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Woman shopping at an online fashion store">
+       <div class="p-4">
+        <h3 data-template-id="proj-3-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 19px;">Fashion Store</h3>
+        <p data-template-id="proj-3-d" class="canva-text text-sm text-slate-300 mt-1" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Modern eCommerce website for a clothing business.</p>
+       </div>
+      </div>
+      <div data-template-id="proj-4" class="canva-card rounded-2xl overflow-hidden" style="background: rgb(15, 23, 42);">
+       <img data-template-id="proj-4-img" loading="lazy" class="canva-image w-full h-40 object-cover" src="https://images.pexels.com/photos/4682189/pexels-photo-4682189.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Network cables connected in a data center">
+       <div class="p-4">
+        <h3 data-template-id="proj-4-t" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 19px;">Networking Project</h3>
+        <p data-template-id="proj-4-d" class="canva-text text-sm text-slate-300 mt-1" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">LAN installation and structured network cabling.</p>
+       </div>
+      </div>
+     </div>
+    </section><!-- TEAM -->
+    <section data-panel="team" class="panel hidden">
+     <h2 data-template-id="team-title" class="canva-text font-extrabold text-center" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 24px;">Our Team</h2>
+     <p data-template-id="team-sub" class="canva-text text-center text-cyan-300 mt-1" style="color: rgb(103, 232, 249); font-weight: 400; font-style: normal; font-size: 16px;">Meet Our Experts</p>
+     <div class="grid sm:grid-cols-3 gap-6 mt-8 max-w-4xl mx-auto">
+      <div data-template-id="team-1" class="canva-card rounded-2xl overflow-hidden text-center" style="background: rgb(15, 23, 42);">
+       <img data-template-id="team-1-img" loading="lazy" class="canva-image w-full h-56 object-cover" src="https://uploads.onecompiler.io/43unes7px/1783763709554/WhatsApp%20Image%202026-07-11%20at%2012.54.41.jpeg" alt="Brian Kiprop Bett, Founder and CEO">
+       <div class="p-4">
+        <h3 data-template-id="team-1-n" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 19px;">Brian Kiprop Bett</h3>
+        <p data-template-id="team-1-r" class="canva-text text-cyan-400 text-sm" style="color: rgb(34, 211, 238); font-weight: 400; font-style: normal; font-size: 16px;">Founder &amp; CEO</p>
+       </div>
+      </div>
+      <div data-template-id="team-2" class="canva-card rounded-2xl overflow-hidden text-center" style="background: rgb(15, 23, 42);">
+       <img data-template-id="team-2-img" loading="lazy" class="canva-image w-full h-56 object-cover" src="https://images.pexels.com/photos/6804586/pexels-photo-6804586.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="IT specialist handling network cables">
+       <div class="p-4">
+        <h3 data-template-id="team-2-n" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 19px;">ICT Support</h3>
+        <p data-template-id="team-2-r" class="canva-text text-cyan-400 text-sm" style="color: rgb(34, 211, 238); font-weight: 400; font-style: normal; font-size: 16px;">Technical Specialist</p>
+       </div>
+      </div>
+      <div data-template-id="team-3" class="canva-card rounded-2xl overflow-hidden text-center" style="background: rgb(15, 23, 42);">
+       <img data-template-id="team-3-img" loading="lazy" class="canva-image w-full h-56 object-cover" src="https://images.pexels.com/photos/12902944/pexels-photo-12902944.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Designer using a laptop and graphic tablet">
+       <div class="p-4">
+        <h3 data-template-id="team-3-n" class="canva-text font-bold" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 19px;">Designer</h3>
+        <p data-template-id="team-3-r" class="canva-text text-cyan-400 text-sm" style="color: rgb(34, 211, 238); font-weight: 400; font-style: normal; font-size: 16px;">Graphics &amp; Branding</p>
+       </div>
+      </div>
+     </div>
+    </section><!-- GALLERY -->
+    <section data-panel="gallery" class="panel hidden">
+     <h2 data-template-id="gallery-title" class="canva-text font-extrabold text-center" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 24px;">Gallery</h2>
+     <p data-template-id="gallery-sub" class="canva-text text-center text-cyan-300 mt-1" style="color: rgb(103, 232, 249); font-weight: 400; font-style: normal; font-size: 16px;">Some Moments From Our Work</p>
+     <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 mt-8"><img data-template-id="gal-1" loading="lazy" class="canva-image w-full h-48 object-cover rounded-xl border border-cyan-500/20" src="https://i.postimg.cc/mDyvQ1vQ/Whats-App-Image-2025-06-13-at-16-43-44.jpg" alt="Gallery photo 1"> <img data-template-id="gal-2" loading="lazy" class="canva-image w-full h-48 object-cover rounded-xl border border-cyan-500/20" src="https://i.postimg.cc/5y9ZpNJD/Whats-App-Image-2025-06-13-at-16-43-44-1.jpg" alt="Gallery photo 2"> <img data-template-id="gal-3" loading="lazy" class="canva-image w-full h-48 object-cover rounded-xl border border-cyan-500/20" src="https://i.postimg.cc/T1fNpXr3/Whats-App-Image-2025-06-13-at-12-11-17.jpg" alt="Gallery photo 3">
+     </div>
+    </section><!-- CONTACT -->
+    <section data-panel="contact" class="panel hidden">
+     <h2 data-template-id="contact-title" class="canva-text font-extrabold text-center" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 24px;">Contact Us</h2>
+     <p data-template-id="contact-sub" class="canva-text text-center text-cyan-300 mt-1" style="color: rgb(103, 232, 249); font-weight: 400; font-style: normal; font-size: 16px;">Let's Build Something Great Together</p>
+     <div class="grid lg:grid-cols-2 gap-8 mt-8">
+      <div data-template-id="contact-info" class="canva-panel p-6 rounded-2xl" style="background: rgb(15, 23, 42);">
+       <h3 data-template-id="contact-reach" class="canva-text font-bold mb-4" style="color: rgb(241, 245, 249); font-weight: 400; font-style: normal; font-size: 19px;">Reach Us</h3>
+       <p data-template-id="contact-phone" class="canva-text text-slate-300 mb-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">📞 +254 754 415 514</p>
+       <p data-template-id="contact-whatsapp" class="canva-text text-slate-300 mb-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">💬 +254 115 769 984</p>
+       <p data-template-id="contact-email" class="canva-text text-slate-300 mb-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">✉ brianseverallsolutions@gmail.com</p>
+       <p data-template-id="contact-location" class="canva-text text-slate-300 mb-2" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">📍 Nandi Hills, Kenya</p>
+       <a data-template-id="contact-youtube" href="https://www.youtube.com/@brianseverall" target="_blank" rel="noopener noreferrer" class="canva-button inline-flex items-center gap-2 px-4 py-2 rounded-lg font-semibold mt-2" style="background: rgb(220, 38, 38); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 15px;"><i data-lucide="youtube" style="width:16px;height:16px;"></i>Subscribe on YouTube</a>
+       <a data-template-id="contact-call-help" href="tel:+254754415514" class="canva-button inline-flex items-center gap-2 px-4 py-2 rounded-lg font-semibold mt-2 ml-2" style="background: rgb(34, 197, 94); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 15px;"><i data-lucide="phone-call" style="width:16px;height:16px;"></i>Click for Help</a>
+      </div>
+      <form id="contact-form" action="https://formsubmit.co/brianseverallsolutions@gmail.com" method="POST" class="canva-panel p-6 rounded-2xl space-y-3">
+       <input type="hidden" name="_subject" value="New enquiry from Brianseverall Solutions website">
+       <input type="hidden" name="_captcha" value="false">
+       <input type="hidden" name="_template" value="table">
+       <div>
+        <label for="c-name" data-template-id="lbl-name" class="canva-text text-sm block mb-1" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Full Name</label><input id="c-name" name="name" type="text" required="" class="w-full px-3 py-2 rounded-lg bg-slate-800 border border-cyan-500/20 text-slate-100">
+       </div>
+       <div>
+        <label for="c-email" data-template-id="lbl-email" class="canva-text text-sm block mb-1" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Email Address</label><input id="c-email" name="email" type="email" required="" class="w-full px-3 py-2 rounded-lg bg-slate-800 border border-cyan-500/20 text-slate-100">
+       </div>
+       <div>
+        <label for="c-msg" data-template-id="lbl-msg" class="canva-text text-sm block mb-1" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">Your Message</label><textarea id="c-msg" name="message" rows="4" class="w-full px-3 py-2 rounded-lg bg-slate-800 border border-cyan-500/20 text-slate-100"></textarea>
+       </div>
+       <div class="flex items-center gap-2 p-3 rounded-lg bg-slate-800 border border-cyan-500/20"><input id="c-robot" type="checkbox" class="w-5 h-5 accent-cyan-500"> <label for="c-robot" data-template-id="robot-label" class="canva-text text-sm" style="color: rgb(203, 213, 225); font-weight: 400; font-style: normal; font-size: 16px;">I confirm I am not a robot</label>
+       </div><button type="submit" id="c-submit" data-template-id="contact-submit" disabled="" class="canva-button w-full px-4 py-2 rounded-lg font-semibold opacity-50 cursor-not-allowed" style="background: rgb(6, 182, 212); color: rgb(0, 16, 24); font-weight: 700; font-style: normal; font-size: 16px;">Send Message</button>
+       <p id="contact-success" data-template-id="contact-success" class="canva-text text-center text-cyan-400 hidden" style="color: rgb(34, 211, 238); font-weight: 400; font-style: normal; font-size: 16px;">Sending your message…</p>
+      </form>
+     </div>
+    </section>
+   </main>
+   <div class="marquee-wrap mt-10" data-template-id="site-marquee">
+    <div class="marquee-track"><span>Welcome to Brianseverall Solutions&nbsp;&nbsp;|&nbsp;&nbsp;Your Tech Partner&nbsp;&nbsp;|&nbsp;&nbsp;Call: +254754415514&nbsp;&nbsp;|&nbsp;&nbsp;WhatsApp: 0115769984&nbsp;&nbsp;|&nbsp;&nbsp;#DigitalKenya 💻🌐&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Welcome to Brianseverall Solutions&nbsp;&nbsp;|&nbsp;&nbsp;Your Tech Partner&nbsp;&nbsp;|&nbsp;&nbsp;Call: +254754415514&nbsp;&nbsp;|&nbsp;&nbsp;WhatsApp: 0115769984&nbsp;&nbsp;|&nbsp;&nbsp;#DigitalKenya 💻🌐</span></div>
+   </div>
+   <footer class="border-t border-cyan-500/20">
+    <div class="max-w-7xl mx-auto px-5 py-6 text-center">
+     <p data-template-id="footer-copy" class="canva-text text-slate-400 text-sm" style="color: rgb(148, 163, 184); font-weight: 400; font-style: normal; font-size: 16px;">© 2026 Brianseverall Solutions. All Rights Reserved.</p>
+    </div>
+   </footer><a data-template-id="call-help-float" href="tel:+254754415514" title="Click for Help — Call +254 754 415 514" class="canva-button fixed bottom-24 right-6 z-40 w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-lg" style="background: rgb(6, 182, 212); color: rgb(0, 16, 24);"><i data-lucide="phone-call"></i></a> <a data-template-id="whatsapp-float" href="https://wa.me/254115769984" target="_blank" rel="noopener noreferrer" class="canva-button fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-lg" style="background: rgb(34, 197, 94); color: rgb(255, 255, 255);"><i data-lucide="message-circle"></i></a>
+  </div>
+  <script src="/_sdk/719055fef2a85d14.editing_sdk.js" integrity="sha512-kFqrdGgIiTOsu307feB5Cy3JVP9IayftsmCIZ0csxYBGuBmJQPhyvcnmKR8F0fTW97h5s1gAvz3SumI8zJ6OxQ=="></script>
+  <script>
+  lucide.createIcons();
 
-    document.body.appendChild(popup);
+  const panels = document.querySelectorAll('[data-panel]');
+  const tabButtons = document.querySelectorAll('[data-tab]');
 
-    setTimeout(() => {
-        popup.remove();
-    }, 5000);
-}
+  function switchTab(name){
+    panels.forEach(p => p.classList.toggle('hidden', p.dataset.panel !== name));
+    const active = document.querySelector('[data-panel="'+name+'"]');
+    if(active){ active.classList.remove('panel'); void active.offsetWidth; active.classList.add('panel'); }
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === name));
+    document.getElementById('mobile-menu').classList.add('hidden');
+    window.scrollTo({top:0, behavior:'smooth'});
+    lucide.createIcons();
+  }
 
-document.addEventListener('keydown', function(e) {
-    if (
-        e.key === 'F12' ||
-        (e.ctrlKey && e.key.toLowerCase() === 'u') ||
-        (e.ctrlKey && e.shiftKey &&
-        ['i', 'j', 'c'].includes(e.key.toLowerCase()))
-    ) {
-        e.preventDefault();
-        showWarning();
+  tabButtons.forEach(b => b.addEventListener('click', () => switchTab(b.dataset.tab)));
+  document.querySelectorAll('[data-tab-link]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); switchTab(a.dataset.tabLink); }));
+
+  document.getElementById('menu-toggle').addEventListener('click', () => {
+    document.getElementById('mobile-menu').classList.toggle('hidden');
+  });
+
+  // ---------- THEME (auto light/dark, with manual override) ----------
+  (function(){
+    const body = document.body;
+    const toggleBtn = document.getElementById('theme-toggle');
+    const STORAGE_KEY = 'brianseverall-theme'; // 'light' | 'dark', absent = follow system
+    const media = window.matchMedia('(prefers-color-scheme: light)');
+
+    function setTheme(isLight){
+      body.classList.toggle('light-theme', isLight);
     }
-});
 
-document.addEventListener('contextmenu', function(e) {
-    e.preventDefault();
-    showWarning();
-});
+    function applyFromSystem(){
+      setTheme(media.matches);
+    }
+
+    // Initial theme: use saved manual choice if present, otherwise follow system
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if(saved === 'light'){ setTheme(true); }
+    else if(saved === 'dark'){ setTheme(false); }
+    else { applyFromSystem(); }
+
+    // Keep following the system automatically unless the user manually picked a theme
+    media.addEventListener('change', () => {
+      if(!localStorage.getItem(STORAGE_KEY)) applyFromSystem();
+    });
+
+    // Manual toggle overrides system preference from now on
+    toggleBtn.addEventListener('click', () => {
+      const nowLight = !body.classList.contains('light-theme');
+      setTheme(nowLight);
+      localStorage.setItem(STORAGE_KEY, nowLight ? 'light' : 'dark');
+    });
+  })();
+
+  // Robot verification enables the send button
+  const robot = document.getElementById('c-robot');
+  const submitBtn = document.getElementById('c-submit');
+  robot.addEventListener('change', () => {
+    submitBtn.disabled = !robot.checked;
+    submitBtn.classList.toggle('opacity-50', !robot.checked);
+    submitBtn.classList.toggle('cursor-not-allowed', !robot.checked);
+  });
+
+  const RECIPIENT = 'brianseverallsolutions@gmail.com';
+  document.getElementById('contact-form').addEventListener('submit', e => {
+    if(!robot.checked){ e.preventDefault(); return; } // must confirm not a robot
+
+    // Let the form POST for real to FormSubmit — it emails brianseverallsolutions@gmail.com directly.
+    const msg = document.getElementById('contact-success');
+    msg.classList.remove('hidden');
+    submitBtn.disabled = true;
+    submitBtn.classList.add('opacity-50','cursor-not-allowed');
+    submitBtn.textContent = 'Sending…';
+    // form submission continues normally (not prevented) and the browser navigates to FormSubmit's confirmation page
+  });
 </script>
-</body>
-</html>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a196c268341e8a64',t:'MTc4Mzc2MTkxMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+</body></html>
